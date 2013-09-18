@@ -10,7 +10,9 @@
 
 @interface ChildInfoDisabilityViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *disabilitySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *specialNeedSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *disabilityStartDateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *specialNeedStartDateTextField;
 
 @end
 
@@ -30,13 +32,42 @@
     [super viewDidLoad];
     [[UISwitch appearance] setOnImage:[UIImage imageNamed:@"yesSwitch"]];
     [[UISwitch appearance] setOffImage:[UIImage imageNamed:@"noSwitch"]];
-    [self.disabilitySwitch addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
+    
+    
+    [self.disabilitySwitch addTarget:self action:@selector(disabilityTrigger) forControlEvents:UIControlEventValueChanged];
+    [self.specialNeedSwitch addTarget:self action:@selector(specialNeedsTrigger) forControlEvents:UIControlEventValueChanged];
 
-
+    
 
 }
 
+-(void)disabilityTrigger
+{
+    if (!self.disabilitySwitch.isOn)
+    {
+        self.disabilityStartDateTextField.enabled = NO;
+        NSLog(@"disable");
+    }
+    else if (self.disabilitySwitch.isOn)
+    {
+        self.disabilityStartDateTextField.enabled = YES;
+        NSLog(@"enable");
+    }
+}
 
+-(void)specialNeedsTrigger
+{
+    if (!self.specialNeedSwitch.isOn)
+    {
+        self.specialNeedStartDateTextField.enabled = NO;
+        NSLog(@"disable");
+    }
+    else if (self.specialNeedSwitch.isOn)
+    {
+        self.specialNeedStartDateTextField.enabled = YES;
+        NSLog(@"enable");
+    }
+}
 
 	- (void)didReceiveMemoryWarning
 {
