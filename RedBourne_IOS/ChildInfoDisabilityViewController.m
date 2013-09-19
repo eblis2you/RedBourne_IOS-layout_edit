@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *specialNeedSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *specialNeedStartDateTextField;
-@property (weak, nonatomic) IBOutlet UITextView *specialNeedStarDateTextView;
+@property (weak, nonatomic) IBOutlet UITextView *specialNeedsCommentTextView;
 
 - (IBAction)saveButton:(UIButton *)sender;
 	
@@ -33,9 +33,28 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{    
+    if ([self.child.disability isEqualToString:@"YES"]) // child is disable
+    {
+        [self.disabilitySwitch setOn:YES];
+        self.disabilityStartDateTextField.text = self.child.disabilityStartDate;
+        self.disabilityCommentTextView.text = self.child.disabilityComments;
+    } else { //child is normal 
+        [self.disabilitySwitch setOn:NO];
+        [self disabilityTrigger];
+    }
     
-    self.disabilityStartDateTextField.text = self.child.disabilityComments;
+    if ([self.child.specialNeeds isEqualToString:@"YES"])
+    {
+        [self.specialNeedSwitch setOn:YES];
+        self.specialNeedStartDateTextField.text = self.child.specialNeedsStartDate;
+        self.specialNeedsCommentTextView.text = self.child.specialNeedsComments;
+    } else { //child is normal
+        [self.disabilitySwitch setOn:NO];
+        [self disabilityTrigger];
+    }
+    
     
 }
 
@@ -82,16 +101,16 @@
     {
         self.specialNeedStartDateTextField.enabled = NO;
         self.specialNeedStartDateTextField.backgroundColor = [UIColor lightGrayColor];
-        self.specialNeedStarDateTextView.editable = NO;
-        self.specialNeedStarDateTextView.backgroundColor = [UIColor lightGrayColor];
+        self.specialNeedsCommentTextView.editable = NO;
+        self.specialNeedsCommentTextView.backgroundColor = [UIColor lightGrayColor];
         NSLog(@"disable");
     }
     else if (self.specialNeedSwitch.isOn)
     {
         self.specialNeedStartDateTextField.enabled = YES;
         self.specialNeedStartDateTextField.backgroundColor = [UIColor clearColor];
-        self.specialNeedStarDateTextView.editable = YES;
-        self.specialNeedStarDateTextView.backgroundColor = [UIColor clearColor];
+        self.specialNeedsCommentTextView.editable = YES;
+        self.specialNeedsCommentTextView.backgroundColor = [UIColor clearColor];
 
         NSLog(@"enable");
     }
