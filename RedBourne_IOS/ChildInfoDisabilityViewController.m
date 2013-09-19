@@ -46,11 +46,15 @@
     if (!self.disabilitySwitch.isOn)
     {
         self.disabilityStartDateTextField.enabled = NO;
+ //      self.disabilityStartDateTextField.borderStyle = UITextBorderStyleBezel;
+        self.disabilityStartDateTextField.backgroundColor = [UIColor lightGrayColor];
         NSLog(@"disable");
     }
     else if (self.disabilitySwitch.isOn)
     {
         self.disabilityStartDateTextField.enabled = YES;
+ //       self.disabilityStartDateTextField.borderStyle = UITextBorderStyleBezel;
+        self.disabilityStartDateTextField.backgroundColor = [UIColor clearColor];
         NSLog(@"enable");
     }
 }
@@ -60,11 +64,15 @@
     if (!self.specialNeedSwitch.isOn)
     {
         self.specialNeedStartDateTextField.enabled = NO;
+        self.specialNeedStartDateTextField.backgroundColor = [UIColor lightGrayColor];
+
         NSLog(@"disable");
     }
     else if (self.specialNeedSwitch.isOn)
     {
         self.specialNeedStartDateTextField.enabled = YES;
+        self.specialNeedStartDateTextField.backgroundColor = [UIColor clearColor];
+
         NSLog(@"enable");
     }
 }
