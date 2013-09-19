@@ -94,6 +94,7 @@ Update the UI to reflect the child set on initial load.
         {
             
             ChildInfoDisabilityViewController *disabilityEditVC = [[ChildInfoDisabilityViewController alloc] init];
+            disabilityEditVC.child = self.child;
             disabilityEditVC.modalPresentationStyle = UIModalPresentationFullScreen;
             [self presentViewController:disabilityEditVC animated:YES completion:nil];
         }   break;

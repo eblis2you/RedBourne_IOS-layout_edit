@@ -24,7 +24,12 @@
       registrationDate:(NSString *)aRegistrationDate
         countryOfBirth:(NSNumber *)aCountryOfBirth
             disability:(NSString *)theDisability
-            thumbnail:(NSString *)aThumbnail
+   disabilityStartDate:(NSString *)theDisabilityStartDate
+    disabilityComments:(NSString *)aDisabilityComments
+          specialNeeds:(NSString *)theSpecialNeeds
+ specialNeedsStartDate:(NSString *)aSpecialNeedsStartDate
+  specialNeedsComments:(NSString *)aSpecialNeedsComments
+             thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename
 {
     self = [super init];
@@ -40,6 +45,11 @@
         self.thumbnail = aThumbnail;
         self.filename = aFilename;
         self.disability = theDisability;
+        self.disabilityStartDate = theDisabilityStartDate;
+        self.disabilityComments = aDisabilityComments;
+        self.specialNeeds = theSpecialNeeds;
+        self.specialNeedsStartDate = theDisabilityStartDate;
+        self.specialNeedsComments = aSpecialNeedsComments;
     }
     return self;
 };

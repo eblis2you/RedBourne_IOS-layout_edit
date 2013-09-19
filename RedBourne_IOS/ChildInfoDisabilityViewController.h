@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChildModel.h"
 
 @interface ChildInfoDisabilityViewController : UIViewController
 - (IBAction)cancelButton:(UIButton *)sender;
+
+@property (strong, nonatomic) ChildModel *child;
+
 
 @end

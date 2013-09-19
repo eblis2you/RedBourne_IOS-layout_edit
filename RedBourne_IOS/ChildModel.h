@@ -55,6 +55,11 @@
       registrationDate:(NSString *)aRegistrationDate
         countryOfBirth:(NSNumber *)aCountryOfBirth
             disability:(NSString *)theDisability
+   disabilityStartDate:(NSString *)theDisabilityStartDate
+    disabilityComments:(NSString *)aDisabilityComments
+          specialNeeds:(NSString *)theSpecialNeeds
+ specialNeedsStartDate:(NSString *)aSpecialNeedsStartDate
+  specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename;
 

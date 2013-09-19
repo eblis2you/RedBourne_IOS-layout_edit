@@ -152,6 +152,11 @@
                                                            registrationDate:child[@"registrationDate"]
                                                              countryOfBirth:child[@"countryOfBirth"]
                                                                  disability:child[@"disability"]
+                                                        disabilityStartDate:child[@"disabilityStartDate"]
+                                                         disabilityComments:child[@"disabilityComments"]
+                                                               specialNeeds:child[@"specialNeeds"]
+                                                      specialNeedsStartDate:child[@"specialNeedsStartDate"]
+                                                       specialNeedsComments:child[@"specialNeedsComments"]
                                                                   thumbnail:child[@"thumbnail"]
                                                                    filename:child[@"filename"]];
              [temp addObject:childModel];
