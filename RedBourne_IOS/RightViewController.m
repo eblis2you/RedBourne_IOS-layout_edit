@@ -14,6 +14,9 @@
 #import "AFJSONRequestOperation.h"
 #import "UIImageView+AFNetworking.h"
 
+@interface RightViewController()
+@end
+
 
 @implementation RightViewController
 
@@ -185,12 +188,17 @@ Update the UI to reflect the child set on initial load.
     [self.iconImageView setImageWithURL:imageURL placeholderImage:placeholder];
 
     
+
+
+
     
 }
 
 
 #pragma mark - UISplitViewDelegate methods
--(void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+-(void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController
+         withBarButtonItem:(UIBarButtonItem *)barButtonItem
+      forPopoverController:(UIPopoverController *)pc
 {
     //Grab a reference to the popover
     self.popover = pc;
@@ -237,6 +245,13 @@ Update the UI to reflect the child set on initial load.
     _childLabel1.text = [NSString stringWithFormat:@"Date of Birth:	 %@", _child.dateOfBirth];
     _childLabel2.text = [NSString stringWithFormat:@"Medicare Number: %@", _child.medicareNumber];
     _childLabel3.text = [NSString stringWithFormat:@"Registration Date:	%@", _child.registrationDate];
+    
+    if (![_childLabel5.text isEqual: @""]) {
+        _childLabel5.text = @"";
+        _childLabel6.text = @"";
+        _childLabel7.text = @"";
+
+    }
 }
 
 - (void)displayChildInfo_Disability
@@ -244,14 +259,17 @@ Update the UI to reflect the child set on initial load.
     _childLabel1.text = [NSString stringWithFormat:@"Disability: %@", self.child.disability];
     _childLabel2.text = [NSString stringWithFormat:@"Disability Start Date: %@", self.child.disabilityStartDate];
     _childLabel3.text = [NSString stringWithFormat:@"Comments: %@", self.child.disabilityComments];
+    
+    _childLabel5.text = [NSString stringWithFormat:@"Special Needs: %@", self.child.specialNeeds];
+    _childLabel6.text = [NSString stringWithFormat:@"Special Needs Start Date: %@", self.child.specialNeedsStartDate];
+    _childLabel7.text = [NSString stringWithFormat:@"Special Needs Comment: %@", self.child.specialNeedsComments];
+    
+    
 }
 
 - (void)displayChildInfo_Medication
 {
-    _childLabel1.text = @"This is medicational tab.";
-    _childLabel2.text = @"There is not medication detial.";
-    _childLabel3.text = @"";
-    _childLabel4.text = @"";
+
 }
 
 - (void) fillProfileViews;

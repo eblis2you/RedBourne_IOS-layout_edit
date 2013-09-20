@@ -51,11 +51,9 @@
         self.specialNeedStartDateTextField.text = self.child.specialNeedsStartDate;
         self.specialNeedsCommentTextView.text = self.child.specialNeedsComments;
     } else { //child is normal
-        [self.disabilitySwitch setOn:NO];
-        [self disabilityTrigger];
+        [self.specialNeedSwitch setOn:NO];
+        [self specialNeedsTrigger];
     }
-    
-    
 }
 
 
@@ -70,9 +68,18 @@
     [self.specialNeedSwitch addTarget:self action:@selector(specialNeedsTrigger)
                      forControlEvents:UIControlEventValueChanged];
     
+    [self.disabilityCommentTextView.layer setBorderColor:[[[UIColor lightGrayColor] colorWithAlphaComponent:0.8] CGColor]];
+    [self.disabilityCommentTextView.layer setBorderWidth:2.0];
+    self.disabilityCommentTextView.layer.cornerRadius = 5;
+    self.disabilityCommentTextView.clipsToBounds = YES;
+    
+    [self.specialNeedsCommentTextView.layer setBorderColor:[[[UIColor lightGrayColor] colorWithAlphaComponent:0.8] CGColor]];
+    [self.specialNeedsCommentTextView.layer setBorderWidth:2.0];
+    self.specialNeedsCommentTextView.layer.cornerRadius = 5;
+    self.specialNeedsCommentTextView.clipsToBounds = YES;
+    
+                                                          
 }
-
-
 
 
 -(void)disabilityTrigger
@@ -125,22 +132,59 @@
 - (IBAction)cancelButton:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
-}
+}	
 - (IBAction)saveButton:(UIButton *)sender {
-    if (self.disabilitySwitch.isOn)
+    
+    if (self.disabilitySwitch == 0) //NOT Disable, nothing need to update/
+    {
+        self.child.disability = @"NO";
+    }
+    else //child is disable, need to updated. 
     {
         self.child.disability = @"YES";
         self.child.disabilityStartDate = self.disabilityStartDateTextField.text;
         self.child.disabilityComments = self.disabilityCommentTextView.text;
     }
-        else if (self.specialNeedSwitch.isOn)
+    
+    switch ([self.disabilitySwitch isOn]) {
+        case 0: //NOT disable
+            self.child.disability = @"NO";
+            break;
+        case 1: //Disable
+            self.child.disability = @"YES";
+        default:
+            break;
+    }
+
+    if (self.specialNeedSwitch == 0)
     {
-        
+        self.child.specialNeeds = @"NO";
+    }
+        else
+    {
+        self.child.specialNeeds = @"YES";
+        self.child.specialNeedsStartDate = self.specialNeedStartDateTextField.text;
+        self.child.specialNeedsComments = self.specialNeedsCommentTextView.text;
+    }
+    
+    switch ([self.specialNeedSwitch isOn]) {
+        case 0:
+            self.child.specialNeeds = @"NO";
+            break;
+        case 1:
+            self.child.specialNeeds = @"YES";
+        default:
+            break;
     }
     
     
+    [ChildModel saveChild:self.child];
     
-    
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)saveChildWhenClosing{
+    [ChildModel saveChild:self.child];
+}
+
 @end

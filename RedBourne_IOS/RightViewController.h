@@ -26,10 +26,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *childLabel3;
 @property (weak, nonatomic) IBOutlet UILabel *childLabel4;
 
-@property (weak, nonatomic) IBOutlet UILabel *childLabel1_R;
-@property (weak, nonatomic) IBOutlet UILabel *childLabel2_R;
-@property (weak, nonatomic) IBOutlet UILabel *childLabel3_R;
-@property (weak, nonatomic) IBOutlet UILabel *childLabel4_R;
+@property (weak, nonatomic) IBOutlet UILabel *childLabel5;
+@property (weak, nonatomic) IBOutlet UILabel *childLabel6;
+@property (weak, nonatomic) IBOutlet UILabel *childLabel7;
+@property (weak, nonatomic) IBOutlet UILabel *childLabel8;
 
 @property (nonatomic, strong) ChildModel *child;
 
@@ -37,3 +37,4 @@
 
 
 @end
+	
