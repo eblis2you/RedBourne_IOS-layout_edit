@@ -25,6 +25,7 @@
     
     //Grab a reference to the LeftViewController and get the first child in the list.
     UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+    leftNavController.edgesForExtendedLayout = NO;
     LeftViewController *leftViewController = (LeftViewController *)[leftNavController topViewController];
   
     //Set the RightViewController as the left's delegate.

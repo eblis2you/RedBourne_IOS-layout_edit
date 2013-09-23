@@ -47,17 +47,17 @@
      Visual customization
      */
     
-    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
-    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:215/255.0f green:75/255.0f blue:75/255.0f alpha:1.0f]];
-    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
-    [self.view setBackgroundColor:bgColor];
-    self.navBarItem.titleView = self.segmentedControl;
+//    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
+//    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:215/255.0f green:75/255.0f blue:75/255.0f alpha:1.0f]];
+//    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
+//    [self.view setBackgroundColor:bgColor];
     
+    self.navBarItem.titleView = self.segmentedControl;
     UIBarButtonItem *editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                      target:self
-                                                                                     action:@selector(editChildInfo)];
+                                                                                action:@selector(editChildInfo)];
     self.navBarItem.rightBarButtonItem = editChildButton;
 }
 
@@ -269,6 +269,17 @@ Update the UI to reflect the child set on initial load.
 
 - (void)displayChildInfo_Medication
 {
+    _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
+    _childLabel2.text = @"";
+    _childLabel3.text = @"";
+    _childLabel4.text = @"";
+    
+    _childLabel5.text = @"";
+    _childLabel6.text = @"";
+    _childLabel7.text = @"";
+    _childLabel8.text = @"";
+
+
 
 }
 

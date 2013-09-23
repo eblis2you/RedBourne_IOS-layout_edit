@@ -8,6 +8,7 @@
 //
 
 #import "ChildModel.h"
+#import "MedicationModel.h"
 
 @implementation ChildModel
 
@@ -31,6 +32,7 @@
   specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename
+            medication:(MedicationModel *)aMedication
 {
     self = [super init];
     if (self)
@@ -50,6 +52,7 @@
         self.specialNeeds = theSpecialNeeds;
         self.specialNeedsStartDate = theDisabilityStartDate;
         self.specialNeedsComments = aSpecialNeedsComments;
+        self.medication = aMedication;
     }
     return self;
 };

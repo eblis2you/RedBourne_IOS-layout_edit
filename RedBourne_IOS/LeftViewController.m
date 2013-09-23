@@ -158,7 +158,8 @@
                                                       specialNeedsStartDate:child[@"specialNeedsStartDate"]
                                                        specialNeedsComments:child[@"specialNeedsComments"]
                                                                   thumbnail:child[@"thumbnail"]
-                                                                   filename:child[@"filename"]];
+                                                                   filename:child[@"filename"]
+                                                                 medication:child[@"medication"]];
              [temp addObject:childModel];
          }
          self.childList = [[NSMutableArray alloc] initWithArray:temp];
