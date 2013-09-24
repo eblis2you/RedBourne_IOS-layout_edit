@@ -27,18 +27,21 @@
 }
 
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super initWithCoder:aDecoder]){
-        [self fillDataWithJSON];
-    }
-    return self;
-}
+//-(id)initWithCoder:(NSCoder *)aDecoder
+//{
+//    if (self = [super initWithCoder:aDecoder]){
+//        [self fillDataWithJSON];
+//    }
+//    
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-       
+    
+    [self fillDataHardCode];
+    
     [[UIBarItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor colorWithRed:220.0/255.0 green:104.0/255.0 blue:1.0/255.0 alpha:1.0], UITextAttributeTextColor,
@@ -158,7 +161,10 @@
                                                       specialNeedsStartDate:child[@"specialNeedsStartDate"]
                                                        specialNeedsComments:child[@"specialNeedsComments"]
                                                                   thumbnail:child[@"thumbnail"]
-                                                                   filename:child[@"filename"]];
+                                                                   filename:child[@"filename"]
+                                                                 medication:child[@"medication"]];
+             
+             
              [temp addObject:childModel];
          }
          self.childList = [[NSMutableArray alloc] initWithArray:temp];
@@ -175,6 +181,22 @@
     [operation start];
 
 }
+
+-(void)fillDataHardCode
+{
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    MedicationModel *medication = [[MedicationModel alloc] initWithName:@"Asthma" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    
+    ChildModel *child1 = [[ChildModel alloc] initWithFirstName:@"Kiddy" surName:@"Shun" crn:@"123321123" dateOfBirth:@"20-09-1990" medicareNumber:@"med12032" registrationDate:@"31-09-1992" countryOfBirth:[NSNumber numberWithInt:20] disability:@"no" disabilityStartDate:@"" disabilityComments:@"" specialNeeds:@"no" specialNeedsStartDate:@"" specialNeedsComments:@"" thumbnail:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_32/bender_32.png" filename:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_256/bender_256.png" medication:medication];
+    
+    [temp addObject:child1];
+    self.childList = [[NSMutableArray alloc] initWithArray:temp];
+    
+    [self.tableView reloadData];
+    
+    
+}
+
 
 #pragma mark Content Filtering
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {

@@ -47,17 +47,19 @@
      Visual customization
      */
     
-    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
-    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:215/255.0f green:75/255.0f blue:75/255.0f alpha:1.0f]];
-    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
-    [self.view setBackgroundColor:bgColor];
-    self.navBarItem.titleView = self.segmentedControl;
+//    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
+//    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:215/255.0f green:75/255.0f blue:75/255.0f alpha:1.0f]];
+//    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
+//    [self.view setBackgroundColor:bgColor];
     
+    
+    
+    self.navBarItem.titleView = self.segmentedControl;
     UIBarButtonItem *editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                      target:self
-                                                                                     action:@selector(editChildInfo)];
+                                                                                action:@selector(editChildInfo)];
     self.navBarItem.rightBarButtonItem = editChildButton;
 }
 
@@ -174,7 +176,7 @@ Update the UI to reflect the child set on initial load.
     self.iconImageView = nil;
 
     self.iconImageView = [[UIImageView alloc] init];
-    self.iconImageView.frame = CGRectMake(20, 60, 120, 136);
+    self.iconImageView.frame = CGRectMake(20, 75, 120, 136);
     
     [self.view addSubview:self.iconImageView];
     
@@ -186,10 +188,6 @@ Update the UI to reflect the child set on initial load.
     
     
     [self.iconImageView setImageWithURL:imageURL placeholderImage:placeholder];
-
-    
-
-
 
     
 }
@@ -232,8 +230,10 @@ Update the UI to reflect the child set on initial load.
         case 1:
             [self displayChildInfo_Disability];
             break;
-        case 2:
+        case 2:{
             [self displayChildInfo_Medication];
+ 
+        }
             break;
         default:
             break;
@@ -269,6 +269,17 @@ Update the UI to reflect the child set on initial load.
 
 - (void)displayChildInfo_Medication
 {
+    _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
+    _childLabel2.text = [NSString stringWithFormat:@"Name: %@", self.child.medication.name ];
+    _childLabel3.text = [NSString stringWithFormat:@"Dosag: %@", self.child.medication.dosage ];
+    _childLabel4.text = [NSString stringWithFormat:@"Interval: %@", self.child.medication.interval ];
+    
+    _childLabel5.text = [NSString stringWithFormat:@"Start Date: %@", self.child.medication.strat];
+    _childLabel6.text = [NSString stringWithFormat:@"End Date: %@", self.child.medication.end];
+    _childLabel7.text = @"";
+    _childLabel8.text = @"";
+
+
 
 }
 

@@ -8,6 +8,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MedicationModel.h"
+
 
 @interface ChildModel : NSObject
 
@@ -43,8 +45,12 @@
 //@property (strong, nonatomic) IndigenousCode *indigenousCode;
 //@property (strong, nonatomic) SchoolStatus *schoolStatus;
 
+
 @property (strong, nonatomic) NSString *thumbnail;
 @property (strong, nonatomic) NSString *filename;
+
+
+@property (strong, nonatomic) MedicationModel *medication;
 
 
 -(id)initWithFirstName:(NSString *)aFirstName
@@ -61,7 +67,8 @@
  specialNeedsStartDate:(NSString *)aSpecialNeedsStartDate
   specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
-              filename:(NSString *)aFilename;
+              filename:(NSString *)aFilename
+            medication:(MedicationModel *)aMedication;
 
 //-(id)initWithJSON;
 
