@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class ChildModel;
-
 #import "ChildSelectionDelegate.h"
+@class ChildModel;
 
 
 @interface LeftViewController : UITableViewController < UISearchBarDelegate, UISearchDisplayDelegate>

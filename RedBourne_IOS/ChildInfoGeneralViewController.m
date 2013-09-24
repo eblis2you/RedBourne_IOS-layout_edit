@@ -185,7 +185,7 @@
     self.child.firstName = self.firstNameField.text;
     self.child.surName = self.surNameField.text;
     self.child.dateOfBirth = self.DOBField.text;
-    self.child.medicareNumber = self.DOBField.text;
+    self.child.medicareNumber = self.medicareNumberField.text;
     self.child.registrationDate = self.registrationDate.text;
     
     
