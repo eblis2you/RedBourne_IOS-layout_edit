@@ -34,7 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.medicationList = [[NSMutableArray alloc] initWithObjects:@"No1", @"No2",@"No3",@"No4",@"No5", nil];
+    
+    [self fillDataHardCode];
+    
     
 }
 
@@ -58,8 +60,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    cell.textLabel.text = [medicationList objectAtIndex:indexPath.row];
+    MedicationModel *medication = [medicationList objectAtIndex:indexPath.row];
+    cell.textLabel.text = medication.name;
     return cell;
 }
 
@@ -68,17 +70,17 @@
 -(void)fillDataHardCode
 {
     NSMutableArray *temp = [[NSMutableArray alloc] init];
-    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma1"
+    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma11"
                                                                   dosage:@"2 puffs"
                                                                 interval:@"Hourly"
                                                                    start:@"11/09/2013"
                                                                      end:@"23/09/2013"];
-    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma2"
+    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma22"
                                                                   dosage:@"2 puffs"
                                                                 interval:@"Hourly"
                                                                    start:@"11/09/2013"
                                                                      end:@"23/09/2013"];
-    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma3"
+    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma33"
                                                                   dosage:@"2 puffs"
                                                                 interval:@"Hourly"
                                                                    start:@"11/09/2013"
@@ -86,6 +88,8 @@
     [temp addObject:medication1];
     [temp addObject:medication2];
     [temp addObject:medication3];
+    
+    self.medicationList = [[NSMutableArray alloc] initWithArray:temp];
     
 }
 
