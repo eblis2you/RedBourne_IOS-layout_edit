@@ -189,7 +189,8 @@
 		C4426DE217E2BB47000635AC /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = C4426D3E17E2BB47000635AC /* tabbar.png */; };
 		C4426DE317E2BB47000635AC /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4426D3F17E2BB47000635AC /* tabbar@2x.png */; };
 		C44E29D917EFBDB900266E00 /* Main_ios7.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C44E29D817EFBDB900266E00 /* Main_ios7.storyboard */; };
-		C458BDC017EBD765006CFF6C /* MedicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C458BDBF17EBD765006CFF6C /* MedicationModel.m */; };
+		C44EC91517F269EF006E79A9 /* MedicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C44EC91417F269EF006E79A9 /* MedicationModel.m */; };
+		C44EC91817F26AAE006E79A9 /* Medication.m in Sources */ = {isa = PBXBuildFile; fileRef = C44EC91717F26AAE006E79A9 /* Medication.m */; };
 		C461562417E2B9DE00A2188E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C461562317E2B9DE00A2188E /* UIKit.framework */; };
 		C461562617E2B9DE00A2188E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C461562517E2B9DE00A2188E /* Foundation.framework */; };
 		C461562817E2B9DE00A2188E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C461562717E2B9DE00A2188E /* CoreGraphics.framework */; };
@@ -410,8 +411,10 @@
 		C4426D3E17E2BB47000635AC /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
 		C4426D3F17E2BB47000635AC /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		C44E29D817EFBDB900266E00 /* Main_ios7.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_ios7.storyboard; sourceTree = "<group>"; };
-		C458BDBE17EBD765006CFF6C /* MedicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationModel.h; sourceTree = "<group>"; };
-		C458BDBF17EBD765006CFF6C /* MedicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationModel.m; sourceTree = "<group>"; };
+		C44EC91317F269EF006E79A9 /* MedicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationModel.h; sourceTree = "<group>"; };
+		C44EC91417F269EF006E79A9 /* MedicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationModel.m; sourceTree = "<group>"; };
+		C44EC91617F26AAE006E79A9 /* Medication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medication.h; sourceTree = "<group>"; };
+		C44EC91717F26AAE006E79A9 /* Medication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medication.m; sourceTree = "<group>"; };
 		C461562017E2B9DE00A2188E /* RedBourne_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedBourne_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C461562317E2B9DE00A2188E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C461562517E2B9DE00A2188E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -460,8 +463,10 @@
 			children = (
 				C4426C7417E2BAE7000635AC /* ChildModel.h */,
 				C4426C7517E2BAE7000635AC /* ChildModel.m */,
-				C458BDBE17EBD765006CFF6C /* MedicationModel.h */,
-				C458BDBF17EBD765006CFF6C /* MedicationModel.m */,
+				C44EC91317F269EF006E79A9 /* MedicationModel.h */,
+				C44EC91417F269EF006E79A9 /* MedicationModel.m */,
+				C44EC91617F26AAE006E79A9 /* Medication.h */,
+				C44EC91717F26AAE006E79A9 /* Medication.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1010,6 +1015,8 @@
 				C4426C7017E2BAD8000635AC /* ChildInfoGeneralViewController.m in Sources */,
 				C4426C7117E2BAD8000635AC /* LeftViewController.m in Sources */,
 				C4426C7217E2BAD8000635AC /* RightViewController.m in Sources */,
+				C44EC91817F26AAE006E79A9 /* Medication.m in Sources */,
+				C44EC91517F269EF006E79A9 /* MedicationModel.m in Sources */,
 				C4426C7317E2BAD8000635AC /* SDSegmentedControl.m in Sources */,
 				C4426C7617E2BAE7000635AC /* ChildModel.m in Sources */,
 				C4426C9217E2BB3E000635AC /* AFHTTPClient.m in Sources */,
@@ -1023,7 +1030,6 @@
 				C4426C9A17E2BB3E000635AC /* UIImageView+AFNetworking.m in Sources */,
 				C4A5E7B117E691EC001A007E /* ChildInfoDisabilityViewController.m in Sources */,
 				C4A5E7B617E69EBC001A007E /* ChildInfoMedicationViewController.m in Sources */,
-				C458BDC017EBD765006CFF6C /* MedicationModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
