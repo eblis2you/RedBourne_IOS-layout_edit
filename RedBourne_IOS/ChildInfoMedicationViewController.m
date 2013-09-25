@@ -9,11 +9,11 @@
 #import "ChildInfoMedicationViewController.h"
 
 @interface ChildInfoMedicationViewController ()
-
-
+@property (weak, nonatomic) IBOutlet UITableView *medicationListTableView;
 @end
 
 @implementation ChildInfoMedicationViewController
+@synthesize medicationList;
 
 
 
@@ -34,35 +34,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.medicationList = [[NSMutableArray alloc] initWithObjects:@"No1", @"No2",@"No3",@"No4",@"No5", nil];
     
 }
 
 
 #pragma mark - Table view Data Source
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)medicationTableView
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-
--(NSInteger)medicationTableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return medicationList.count;
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)medicationTableView
-        cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [medicationTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
+    cell.textLabel.text = [medicationList objectAtIndex:indexPath.row];
     return cell;
-    
 }
-
 
 
 
@@ -90,16 +89,20 @@
     
 }
 
+#pragma mark - IBAction for button
 
 
 - (IBAction)saveButton:(UIButton *)sender {
+    
+    
 }
+
 - (IBAction)cancelButton:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
-
+#pragma mark - System reserved
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
