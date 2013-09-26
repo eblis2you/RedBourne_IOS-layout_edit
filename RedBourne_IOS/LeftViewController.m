@@ -126,7 +126,6 @@
     } else {
         selectChild = self.childList[indexPath.row];
     }
-    
     if (_delegate) {
         [_delegate selectedChild:selectChild];
     }
@@ -170,11 +169,10 @@
          self.childList = [[NSMutableArray alloc] initWithArray:temp];
          
          [self.tableView reloadData];    // this is necessary, because by the time this runs,
-         // tableView:numberOfRowsInSection has already executed
+                                         // tableView:numberOfRowsInSection has already executed
          
          //notification boardcast for rightViewController to wait to load data.
          [[NSNotificationCenter defaultCenter] postNotificationName:@"fillDataWithJSONFinishedLoading" object:nil];
-         
      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
          NSLog(@"NSError: %@",[error localizedDescription]);
      }];
@@ -184,8 +182,11 @@
 
 -(void)fillDataHardCode
 {
-    MedicationModel *medication = [[MedicationModel alloc] initWithName:@"Asthma" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
-    NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:medication,medication,medication,nil];
+    MedicationModel *a = [[MedicationModel alloc] initWithName:@"aa" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    MedicationModel *b = [[MedicationModel alloc] initWithName:@"bb" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    MedicationModel *c = [[MedicationModel alloc] initWithName:@"cc" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:a,b,c,nil];
     
     
     ChildModel *child1 = [[ChildModel alloc] initWithFirstName:@"Kiddy" surName:@"Shun" crn:@"123321123" dateOfBirth:@"20-09-1990" medicareNumber:@"med12032" registrationDate:@"31-09-1992" countryOfBirth:[NSNumber numberWithInt:20] disability:@"no" disabilityStartDate:@"" disabilityComments:@"" specialNeeds:@"no" specialNeedsStartDate:@"" specialNeedsComments:@"" thumbnail:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_32/bender_32.png" filename:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_256/bender_256.png" medications:temp];
@@ -213,18 +214,21 @@
 
 
 #pragma mark - UISearchDisplayController Delegate Methods
+
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     // Tells the table data source to reload when text changes
-    [self filterContentForSearchText:searchString scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
     // Tells the table data source to reload when scope bar selection changes
-    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:searchOption]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }

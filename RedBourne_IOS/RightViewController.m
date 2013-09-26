@@ -22,13 +22,12 @@
 
 @implementation RightViewController
 
-
+#pragma mark - Table View Data Source
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -42,16 +41,25 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     MedicationModel *med = self.localMedicationList[indexPath.row];
     cell.textLabel.text =med.name;
     return cell;
 }
 
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    ChildInfoMedicationViewController *medicationEditVC = [[ChildInfoMedicationViewController alloc] init];
+    medicationEditVC.MedicationNeedEdit = [self.localMedicationList objectAtIndex:indexPath.row];
+    medicationEditVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:medicationEditVC animated:YES completion:nil];
+}
+
 
 #pragma mark - View Lifecycle
 // segmented control as the custom title view
-
 
 - (void)viewDidLoad
 {
@@ -108,28 +116,28 @@ Update the UI to reflect the child set on initial load.
 //                                             selector:@selector(refreshUI)
 //                                                 name:@"fillDataWithJSONFinishedLoading"
 //                                               object:nil];
-    
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma11"
-                                                                  dosage:@"2 puffs"
-                                                                interval:@"Hourly"
-                                                                   start:@"11/09/2013"
-                                                                     end:@"23/09/2013"];
-    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma22"
-                                                                  dosage:@"2 puffs"
-                                                                interval:@"Hourly"
-                                                                   start:@"11/09/2013"
-                                                                     end:@"23/09/2013"];
-    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma33"
-                                                                  dosage:@"2 puffs"
-                                                                interval:@"Hourly"
-                                                                   start:@"11/09/2013"
-                                                                     end:@"23/09/2013"];
-    [temp addObject:medication1];
-    [temp addObject:medication2];
-    [temp addObject:medication3];
-    
-    self.localMedicationList = [[NSMutableArray alloc] initWithArray:temp];
+//    
+//    NSMutableArray *temp = [[NSMutableArray alloc] init];
+//    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma11"
+//                                                                  dosage:@"2 puffs"
+//                                                                interval:@"Hourly"
+//                                                                   start:@"11/09/2013"
+//                                                                     end:@"23/09/2013"];
+//    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma22"
+//                                                                  dosage:@"2 puffs"
+//                                                                interval:@"Hourly"
+//                                                                   start:@"11/09/2013"
+//                                                                     end:@"23/09/2013"];
+//    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma33"
+//                                                                  dosage:@"2 puffs"
+//                                                                interval:@"Hourly"
+//                                                                   start:@"11/09/2013"
+//                                                                     end:@"23/09/2013"];
+//    [temp addObject:medication1];
+//    [temp addObject:medication2];
+//    [temp addObject:medication3];
+//    
+//    self.localMedicationList = [[NSMutableArray alloc] initWithArray:temp];
 
     
  

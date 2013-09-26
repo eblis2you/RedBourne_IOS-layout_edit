@@ -9,12 +9,16 @@
 #import "ChildInfoMedicationViewController.h"
 
 @interface ChildInfoMedicationViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *medicationListTableView;
+@property (weak, nonatomic) IBOutlet UILabel *medicationNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *medicationDosageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *medicationIntervalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *medicationStartDate;
+@property (weak, nonatomic) IBOutlet UILabel *medicationEndDate;
+
 @end
 
 @implementation ChildInfoMedicationViewController
-@synthesize medicationList;
-
+@synthesize MedicationNeedEdit;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,63 +39,13 @@
 {
     [super viewDidLoad];
     
-    [self fillDataHardCode];
+    self.medicationNameLabel.text = MedicationNeedEdit.name;
     
     
 }
 
 
-#pragma mark - Table view Data Source
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return medicationList.count;
-}
-
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    MedicationModel *medication = [medicationList objectAtIndex:indexPath.row];
-    cell.textLabel.text = medication.name;
-    return cell;
-}
-
-
-
--(void)fillDataHardCode
-{
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma11"
-                                                                  dosage:@"2 puffs"
-                                                                interval:@"Hourly"
-                                                                   start:@"11/09/2013"
-                                                                     end:@"23/09/2013"];
-    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma22"
-                                                                  dosage:@"2 puffs"
-                                                                interval:@"Hourly"
-                                                                   start:@"11/09/2013"
-                                                                     end:@"23/09/2013"];
-    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma33"
-                                                                  dosage:@"2 puffs"
-                                                                interval:@"Hourly"
-                                                                   start:@"11/09/2013"
-                                                                     end:@"23/09/2013"];
-    [temp addObject:medication1];
-    [temp addObject:medication2];
-    [temp addObject:medication3];
-    
-    self.medicationList = [[NSMutableArray alloc] initWithArray:temp];
-    
-}
 
 #pragma mark - IBAction for button
 

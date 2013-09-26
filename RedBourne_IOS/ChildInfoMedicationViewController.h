@@ -11,10 +11,9 @@
 #import "MedicationModel.h"
 
 
-@interface ChildInfoMedicationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) ChildModel *child;
+@interface ChildInfoMedicationViewController : UIViewController
 
-@property (retain, nonatomic) NSMutableArray *medicationList;
+@property (retain, nonatomic) MedicationModel *MedicationNeedEdit;
 
 
 
