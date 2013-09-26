@@ -16,7 +16,7 @@
 
 @interface RightViewController()
 @property (weak, nonatomic) IBOutlet UITableView *childMedicationListTableView;
-@property NSArray *localMedicationList;
+@property NSMutableArray *localMedicationList;
 @end
 
 
@@ -125,9 +125,6 @@ Update the UI to reflect the child set on initial load.
     [temp addObject:medication3];
     
     self.localMedicationList = [[NSMutableArray alloc] initWithArray:temp];
-
-    
-    
     [self refreshUI];
     
 }
@@ -168,15 +165,7 @@ Update the UI to reflect the child set on initial load.
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 
-    // Dispose of any resources that can be recreated, in this case the IBOutlets.
-    [self setNameLabel:nil];
-    [self setDescriptionLabel:nil];
-    [self setIconImageView:nil];
-}
 
 #pragma mark - Child Selection Delegate
 
@@ -198,6 +187,9 @@ Update the UI to reflect the child set on initial load.
     if (_child != newChild) {
         _child = newChild;
         //Update the UI to reflect the new child selected from the list.
+        
+//        self.localMedicationList = _child.medications;
+        
         [self refreshUI];
 
     }
@@ -322,12 +314,14 @@ Update the UI to reflect the child set on initial load.
 - (void)displayChildInfo_Medication
 {
     _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
-    _childLabel2.text = [NSString stringWithFormat:@"Name: %@", self.child.medication.name ];
-    _childLabel3.text = [NSString stringWithFormat:@"Dosag: %@", self.child.medication.dosage ];
-    _childLabel4.text = [NSString stringWithFormat:@"Interval: %@", self.child.medication.interval ];
     
-    _childLabel5.text = [NSString stringWithFormat:@"Start Date: %@", self.child.medication.strat];
-    _childLabel6.text = [NSString stringWithFormat:@"End Date: %@", self.child.medication.end];
+    MedicationModel *temp = self.child.medications[0];
+    _childLabel2.text = [NSString stringWithFormat:@"Name: %@", temp.name ];
+    _childLabel3.text = [NSString stringWithFormat:@"Dosag: %@", temp.dosage ];
+    _childLabel4.text = [NSString stringWithFormat:@"Interval: %@", temp.interval ];
+    
+    _childLabel5.text = [NSString stringWithFormat:@"Start Date: %@", temp.strat];
+    _childLabel6.text = [NSString stringWithFormat:@"End Date: %@", temp.end];
     _childLabel7.text = @"";
     _childLabel8.text = @"";
 
@@ -335,12 +329,15 @@ Update the UI to reflect the child set on initial load.
 
 }
 
-- (void) fillProfileViews;
+
+- (void)didReceiveMemoryWarning
 {
-
+    [super didReceiveMemoryWarning];
     
-
-    
+    // Dispose of any resources that can be recreated, in this case the IBOutlets.
+    [self setNameLabel:nil];
+    [self setDescriptionLabel:nil];
+    [self setIconImageView:nil];
 }
 
 @end

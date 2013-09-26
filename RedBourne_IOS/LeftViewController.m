@@ -162,7 +162,7 @@
                                                        specialNeedsComments:child[@"specialNeedsComments"]
                                                                   thumbnail:child[@"thumbnail"]
                                                                    filename:child[@"filename"]
-                                                                 medication:child[@"medication"]];
+                                                                medications:child[@"medication"]];
              
              
              [temp addObject:childModel];
@@ -184,10 +184,14 @@
 
 -(void)fillDataHardCode
 {
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-    MedicationModel *medication = [[MedicationModel alloc] initWithName:@"Asthma" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    MedicationModel *med1 = [[MedicationModel alloc] initWithName:@"11Asthma" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    MedicationModel *med2 = [[MedicationModel alloc] initWithName:@"22Asthma" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
+    MedicationModel *med3 = [[MedicationModel alloc] initWithName:@"33Asthma" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
     
-    ChildModel *child1 = [[ChildModel alloc] initWithFirstName:@"Kiddy" surName:@"Shun" crn:@"123321123" dateOfBirth:@"20-09-1990" medicareNumber:@"med12032" registrationDate:@"31-09-1992" countryOfBirth:[NSNumber numberWithInt:20] disability:@"no" disabilityStartDate:@"" disabilityComments:@"" specialNeeds:@"no" specialNeedsStartDate:@"" specialNeedsComments:@"" thumbnail:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_32/bender_32.png" filename:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_256/bender_256.png" medication:medication];
+    NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:med1,med2,med3, nil];
+
+    
+    ChildModel *child1 = [[ChildModel alloc] initWithFirstName:@"Kiddy" surName:@"Shun" crn:@"123321123" dateOfBirth:@"20-09-1990" medicareNumber:@"med12032" registrationDate:@"31-09-1992" countryOfBirth:[NSNumber numberWithInt:20] disability:@"no" disabilityStartDate:@"" disabilityComments:@"" specialNeeds:@"no" specialNeedsStartDate:@"" specialNeedsComments:@"" thumbnail:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_32/bender_32.png" filename:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_256/bender_256.png" medications:temp];
     
     [temp addObject:child1];
     self.childList = [[NSMutableArray alloc] initWithArray:temp];
