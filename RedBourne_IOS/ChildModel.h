@@ -50,7 +50,7 @@
 @property (strong, nonatomic) NSString *filename;
 
 
-@property (strong, nonatomic) MedicationModel *medication;
+@property (strong, nonatomic) NSMutableArray *medications;
 
 
 -(id)initWithFirstName:(NSString *)aFirstName
@@ -68,7 +68,7 @@
   specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename
-            medication:(MedicationModel *)aMedication;
+           medications:(NSMutableArray *)aMedicationList;
 
 //-(id)initWithJSON;
 

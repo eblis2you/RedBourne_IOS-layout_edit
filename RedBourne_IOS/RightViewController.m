@@ -88,6 +88,11 @@
                                                                                      target:self
                                                                                 action:@selector(editChildInfo)];
     self.navBarItem.rightBarButtonItem = editChildButton;
+    
+    
+    if (_child != nil) {
+        
+    }
 }
 
 
@@ -127,9 +132,7 @@ Update the UI to reflect the child set on initial load.
     self.localMedicationList = [[NSMutableArray alloc] initWithArray:temp];
 
     
-    
-    [self refreshUI];
-    
+ 
 }
 
 
@@ -242,6 +245,12 @@ Update the UI to reflect the child set on initial load.
     [self.iconImageView setImageWithURL:imageURL placeholderImage:placeholder];
 
     
+    if (_child != nil) {
+        self.localMedicationList = _child.medications;
+    }
+    
+    [self.childMedicationListTableView reloadData];
+    
 }
 
 
@@ -322,12 +331,13 @@ Update the UI to reflect the child set on initial load.
 - (void)displayChildInfo_Medication
 {
     _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
-    _childLabel2.text = [NSString stringWithFormat:@"Name: %@", self.child.medication.name ];
-    _childLabel3.text = [NSString stringWithFormat:@"Dosag: %@", self.child.medication.dosage ];
-    _childLabel4.text = [NSString stringWithFormat:@"Interval: %@", self.child.medication.interval ];
-    
-    _childLabel5.text = [NSString stringWithFormat:@"Start Date: %@", self.child.medication.strat];
-    _childLabel6.text = [NSString stringWithFormat:@"End Date: %@", self.child.medication.end];
+    MedicationModel *med = self.child.medications[0];
+    _childLabel2.text = [NSString stringWithFormat:@"Name: %@", med.name ];
+//    _childLabel3.text = [NSString stringWithFormat:@"Dosag: %@", self.child.medication.dosage ];
+//    _childLabel4.text = [NSString stringWithFormat:@"Interval: %@", self.child.medication.interval ];
+//    
+//    _childLabel5.text = [NSString stringWithFormat:@"Start Date: %@", self.child.medication.strat];
+//    _childLabel6.text = [NSString stringWithFormat:@"End Date: %@", self.child.medication.end];
     _childLabel7.text = @"";
     _childLabel8.text = @"";
 
@@ -335,12 +345,6 @@ Update the UI to reflect the child set on initial load.
 
 }
 
-- (void) fillProfileViews;
-{
 
-    
-
-    
-}
 
 @end
