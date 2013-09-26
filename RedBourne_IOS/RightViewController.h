@@ -12,7 +12,7 @@
 #import "ChildSelectionDelegate.h"
 
 @interface RightViewController : UIViewController
-    <UISplitViewControllerDelegate, ChildSelectionDelegate>
+    <UISplitViewControllerDelegate, ChildSelectionDelegate,UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIPopoverController *popover;
 

@@ -15,11 +15,38 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface RightViewController()
+@property (weak, nonatomic) IBOutlet UITableView *childMedicationListTableView;
+@property NSArray *localMedicationList;
 @end
 
 
 @implementation RightViewController
 
+
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.localMedicationList.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    MedicationModel *med = self.localMedicationList[indexPath.row];
+    cell.textLabel.text =med.name;
+    return cell;
+}
 
 
 #pragma mark - View Lifecycle
@@ -76,6 +103,31 @@ Update the UI to reflect the child set on initial load.
 //                                             selector:@selector(refreshUI)
 //                                                 name:@"fillDataWithJSONFinishedLoading"
 //                                               object:nil];
+    
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma11"
+                                                                  dosage:@"2 puffs"
+                                                                interval:@"Hourly"
+                                                                   start:@"11/09/2013"
+                                                                     end:@"23/09/2013"];
+    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma22"
+                                                                  dosage:@"2 puffs"
+                                                                interval:@"Hourly"
+                                                                   start:@"11/09/2013"
+                                                                     end:@"23/09/2013"];
+    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma33"
+                                                                  dosage:@"2 puffs"
+                                                                interval:@"Hourly"
+                                                                   start:@"11/09/2013"
+                                                                     end:@"23/09/2013"];
+    [temp addObject:medication1];
+    [temp addObject:medication2];
+    [temp addObject:medication3];
+    
+    self.localMedicationList = [[NSMutableArray alloc] initWithArray:temp];
+
+    
+    
     [self refreshUI];
     
 }
