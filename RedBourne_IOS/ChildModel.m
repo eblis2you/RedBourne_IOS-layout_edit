@@ -32,7 +32,7 @@
   specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename
-            medications:(NSMutableArray *)aMedicationArray
+            medication:(MedicationModel *)aMedication
 {
     self = [super init];
     if (self)
@@ -52,7 +52,7 @@
         self.specialNeeds = theSpecialNeeds;
         self.specialNeedsStartDate = theDisabilityStartDate;
         self.specialNeedsComments = aSpecialNeedsComments;
-        self.medications = aMedicationArray;
+        self.medication = aMedication;
     }
     return self;
 };
@@ -67,7 +67,7 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"<MedicationModel: %p>\nfirstName: %@\nsurName: %@\ncrn: %@\nDOB: %@\nmedicareNo: %@\nregistrationDate: %@\ndisability: %@", self, self.firstName, self.surName, self.crn, self.dateOfBirth, self.medicareNumber, self.registrationDate, self.disability];
+    return [NSString stringWithFormat:@"<ChildMode: %p>\nfirstName: %@\nsurName: %@\ncrn: %@\nDOB: %@\nmedicareNo: %@\nregistrationDate: %@\ndisability: %@", self, self.firstName, self.surName, self.crn, self.dateOfBirth, self.medicareNumber, self.registrationDate, self.disability];
 }
 
 
