@@ -24,18 +24,15 @@
 
 #pragma mark - Table View Data Source
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.localMedicationList.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -48,8 +45,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ChildInfoMedicationViewController *medicationEditVC = [[ChildInfoMedicationViewController alloc] init];
     medicationEditVC.MedicationNeedEdit = [self.localMedicationList objectAtIndex:indexPath.row];
@@ -59,12 +55,11 @@
 
 
 #pragma mark - View Lifecycle
-// segmented control as the custom title view
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 	NSArray *segmentTextContent = [NSArray arrayWithObjects:
                                    NSLocalizedString(@"GENERAL", @""),
                                    NSLocalizedString(@"DISABILITY", @""),
@@ -78,10 +73,12 @@
 	[self.segmentedControl addTarget:self
                               action:@selector(segmentAction:)
                     forControlEvents:UIControlEventValueChanged];
-	/*
-     Visual customization
-     */
-    
+    UIBarButtonItem *editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                     target:self
+                                                                                     action:@selector(editChildInfo)];
+    self.navBarItem.rightBarButtonItem = editChildButton;
+    self.navBarItem.titleView = self.segmentedControl;
+
 //    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
 //    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 //    [self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
@@ -89,18 +86,8 @@
 //    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
 //    [self.view setBackgroundColor:bgColor];
     
-    
-    
-    self.navBarItem.titleView = self.segmentedControl;
-    UIBarButtonItem *editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                                                     target:self
-                                                                                action:@selector(editChildInfo)];
-    self.navBarItem.rightBarButtonItem = editChildButton;
-    
-    
-    if (_child != nil) {
-        
-    }
+    self.childMedicationListTableView.hidden = YES;
+
 }
 
 
@@ -112,35 +99,7 @@ Update the UI to reflect the child set on initial load.
 {
     [super viewWillAppear:animated];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(refreshUI)
-//                                                 name:@"fillDataWithJSONFinishedLoading"
-//                                               object:nil];
-//    
-//    NSMutableArray *temp = [[NSMutableArray alloc] init];
-//    MedicationModel *medication1 = [[MedicationModel alloc] initWithName:@"Asthma11"
-//                                                                  dosage:@"2 puffs"
-//                                                                interval:@"Hourly"
-//                                                                   start:@"11/09/2013"
-//                                                                     end:@"23/09/2013"];
-//    MedicationModel *medication2 = [[MedicationModel alloc] initWithName:@"Asthma22"
-//                                                                  dosage:@"2 puffs"
-//                                                                interval:@"Hourly"
-//                                                                   start:@"11/09/2013"
-//                                                                     end:@"23/09/2013"];
-//    MedicationModel *medication3 = [[MedicationModel alloc] initWithName:@"Asthma33"
-//                                                                  dosage:@"2 puffs"
-//                                                                interval:@"Hourly"
-//                                                                   start:@"11/09/2013"
-//                                                                     end:@"23/09/2013"];
-//    [temp addObject:medication1];
-//    [temp addObject:medication2];
-//    [temp addObject:medication3];
-//    
-//    self.localMedicationList = [[NSMutableArray alloc] initWithArray:temp];
 
-    
- 
 }
 
 
@@ -217,7 +176,13 @@ Update the UI to reflect the child set on initial load.
 #pragma mark - New Methods
 -(void)refreshUI
 {
-   
+    if (self.segmentedControl.selectedSegmentIndex == 2) {
+        [self displayChildInfo_Medication];
+    } else if (self.segmentedControl.selectedSegmentIndex == 1){
+        [self displayChildInfo_Disability];
+    } else {
+        [self displayChildInfo_General];
+    }
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
             [self displayChildInfo_General];
@@ -237,26 +202,18 @@ Update the UI to reflect the child set on initial load.
 
     [self.iconImageView removeFromSuperview];
     self.iconImageView = nil;
-
     self.iconImageView = [[UIImageView alloc] init];
     self.iconImageView.frame = CGRectMake(20, 75, 120, 136);
-    
     [self.view addSubview:self.iconImageView];
-    
     self.iconImageView.image = nil;
-    
     NSURL *imageURL = [NSURL URLWithString:self.child.filename];
-    
     UIImage *placeholder = [UIImage imageNamed:@"placeholder.jpg"];
-    
-    
     [self.iconImageView setImageWithURL:imageURL placeholderImage:placeholder];
 
-    
+
     if (_child != nil) {
         self.localMedicationList = _child.medications;
     }
-    
     [self.childMedicationListTableView reloadData];
     
 }
@@ -292,21 +249,17 @@ Update the UI to reflect the child set on initial load.
 	// The segmented control was clicked, handle it here
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     
-    switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            [self displayChildInfo_General];
-            break;
-        case 1:
+    if (segmentedControl.selectedSegmentIndex == 2) {
+        self.childMedicationListTableView.hidden = NO;
+        [self displayChildInfo_Medication];
+    } else {
+        self.childMedicationListTableView.hidden = YES;
+        if (segmentedControl.selectedSegmentIndex == 1) {
             [self displayChildInfo_Disability];
-            break;
-        case 2:{
-            [self displayChildInfo_Medication];
- 
-        }
-            break;
-        default:
-            break;
+        } else
+            [self displayChildInfo_General];
     }
+    
 }
 
 - (void)displayChildInfo_General
