@@ -9,10 +9,15 @@
             <connections>
                 <outlet property="MedicationNameLabel" destination="umI-Dw-fBf" id="GIy-Ov-dmF"/>
                 <outlet property="medicationDosageLabel" destination="f3j-aJ-ANk" id="EI1-NM-hj0"/>
+                <outlet property="medicationDosageTextField" destination="KTt-AA-WXK" id="rga-Mp-e5E"/>
                 <outlet property="medicationEndDate" destination="UTd-oL-ZWT" id="2k7-Lk-Ot4"/>
+                <outlet property="medicationEndDateTextField" destination="Xjj-MK-QiD" id="FrT-ut-rF4"/>
                 <outlet property="medicationIntervalLabel" destination="kx1-vq-tKc" id="TYY-pK-AvA"/>
+                <outlet property="medicationIntervalTextField" destination="8OS-dr-kIj" id="EoL-dQ-M66"/>
                 <outlet property="medicationNameLabel" destination="umI-Dw-fBf" id="ff9-4C-BJY"/>
+                <outlet property="medicationNameTextField" destination="ziK-Tq-UYP" id="qVh-gy-XB3"/>
                 <outlet property="medicationStartDate" destination="UTd-oL-ZWT" id="vS1-3m-Axl"/>
+                <outlet property="medicationStartDateTextField" destination="wxd-Ch-d5q" id="CKh-kx-vJA"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
