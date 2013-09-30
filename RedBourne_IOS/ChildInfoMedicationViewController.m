@@ -15,6 +15,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *medicationStartDate;
 @property (weak, nonatomic) IBOutlet UILabel *medicationEndDate;
 
+
+@property (weak, nonatomic) IBOutlet UITextField *medicationNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *medicationDosageTextField;
+@property (weak, nonatomic) IBOutlet UITextField *medicationIntervalTextField;
+@property (weak, nonatomic) IBOutlet UITextField *medicationStartDateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *medicationEndDateTextField;
+
 @end
 
 @implementation ChildInfoMedicationViewController
@@ -25,12 +32,17 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        self.title = @"Edit Medication Information";
     }
     return self;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.medicationNameTextField.text = self.MedicationNeedEdit.name;
+    self.medicationDosageTextField.text = self.MedicationNeedEdit.dosage;
+    self.medicationIntervalTextField.text = self.MedicationNeedEdit.interval;
+    self.medicationStartDateTextField.text = self.MedicationNeedEdit.strat;
+    self.medicationEndDateTextField.text = self.MedicationNeedEdit.end;
     
     
 }
@@ -39,9 +51,6 @@
 {
     [super viewDidLoad];
     
-    self.medicationNameLabel.text = MedicationNeedEdit.name;
-    
-    
 }
 
 
@@ -49,9 +58,13 @@
 
 #pragma mark - IBAction for button
 
-
 - (IBAction)saveButton:(UIButton *)sender {
-    
+    self.MedicationNeedEdit.name = self.medicationNameTextField.text;
+    self.MedicationNeedEdit.dosage = self.medicationDosageTextField.text;
+    self.MedicationNeedEdit.interval = self.medicationIntervalTextField.text;
+    self.MedicationNeedEdit.strat = self.medicationStartDate.text;
+    self.MedicationNeedEdit.end = self.medicationEndDate.text;
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
