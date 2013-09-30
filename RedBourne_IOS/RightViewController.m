@@ -247,7 +247,6 @@ Update the UI to reflect the child set on initial load.
 
 - (IBAction)segmentAction:(id)sender
 {
-	// The segmented control was clicked, handle it here
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     
     if (segmentedControl.selectedSegmentIndex == 2) {
@@ -302,8 +301,6 @@ Update the UI to reflect the child set on initial load.
 
     _childLabel6.text = @"";
     _childLabel7.text = @"";
-
-
 
 }
 

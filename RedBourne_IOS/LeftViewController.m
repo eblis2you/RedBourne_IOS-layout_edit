@@ -39,11 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    [self fillDataHardCode];
     [self fillDataWithJSON];
-    
-    
+
     [[UIBarItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor colorWithRed:0.863 green:0.408 blue:0.004 alpha:1.000], UITextAttributeTextColor,
@@ -52,20 +49,13 @@
       [UIFont fontWithName:@"AmericanTypewriter" size:0.0], UITextAttributeFont,nil]
                                           forState:UIControlStateNormal];
     
-    
     //initialize the filteredChildArray
-    
     filterChildArray = [NSMutableArray arrayWithCapacity:[childList count]];
-    
     [[self tableView] reloadData];
-    
-    
+
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+
 
 #pragma mark - Table view data source
 
@@ -76,29 +66,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView)
-    {
+    if (tableView == self.searchDisplayController.searchResultsTableView){
         return [filterChildArray count];
     }
     else
-    {
         return [childList count];
-    }
-    
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     }
-    
+
     ChildModel *theChild = [[ChildModel alloc] init];
-    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         theChild = [self.filterChildArray objectAtIndex:indexPath.row];
     } else {
@@ -115,14 +98,10 @@
 }
 
 
-
-
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChildModel *selectChild = [[ChildModel alloc] init];
-
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         selectChild = [self.filterChildArray objectAtIndex:indexPath.row];
     } else {
@@ -190,24 +169,6 @@
 
 }
 
--(void)fillDataHardCode
-{
-    MedicationModel *a = [[MedicationModel alloc] initWithName:@"aa" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
-    MedicationModel *b = [[MedicationModel alloc] initWithName:@"bb" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
-    MedicationModel *c = [[MedicationModel alloc] initWithName:@"cc" dosage:@"2 puffs" interval:@"Hourly" start:@"11/09/2013" end:@"23/09/2013"];
-    
-    NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:a,b,c,nil];
-    
-    
-    ChildModel *child1 = [[ChildModel alloc] initWithFirstName:@"Kiddy" surName:@"Shun" crn:@"123321123" dateOfBirth:@"20-09-1990" medicareNumber:@"med12032" registrationDate:@"31-09-1992" countryOfBirth:[NSNumber numberWithInt:20] disability:@"no" disabilityStartDate:@"" disabilityComments:@"" specialNeeds:@"no" specialNeedsStartDate:@"" specialNeedsComments:@"" thumbnail:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_32/bender_32.png" filename:@"https://dl.dropboxusercontent.com/u/3741832/develop/img_256/bender_256.png" medications:temp];
-    
-
-    self.childList = [[NSMutableArray alloc] initWithObjects:child1,child1, nil];
-    
-    [self.tableView reloadData];
-    
-    
-}
 
 
 #pragma mark Content Filtering
@@ -241,6 +202,12 @@
                                       objectAtIndex:searchOption]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
 }
 
 
