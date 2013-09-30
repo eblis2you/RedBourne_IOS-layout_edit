@@ -17,7 +17,6 @@
 @interface RightViewController()
 @property (weak, nonatomic) IBOutlet UITableView *childMedicationListTableView;
 @property NSArray *localMedicationList;
-@property UIBarButtonItem *editChildButton;
 @end
 
 
@@ -74,11 +73,10 @@
 	[self.segmentedControl addTarget:self
                               action:@selector(segmentAction:)
                     forControlEvents:UIControlEventValueChanged];
-    
-    self.editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+    UIBarButtonItem *editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                      target:self
                                                                                      action:@selector(editChildInfo)];
-    self.navBarItem.rightBarButtonItem = self.editChildButton;
+    self.navBarItem.rightBarButtonItem = editChildButton;
     self.navBarItem.titleView = self.segmentedControl;
 
 //    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
@@ -102,7 +100,6 @@ Update the UI to reflect the child set on initial load.
     [super viewWillAppear:animated];
 
 
-    [self refreshUI];
 }
 
 
@@ -254,11 +251,9 @@ Update the UI to reflect the child set on initial load.
     
     if (segmentedControl.selectedSegmentIndex == 2) {
         self.childMedicationListTableView.hidden = NO;
-        self.navBarItem.rightBarButtonItem = nil;
         [self displayChildInfo_Medication];
     } else {
         self.childMedicationListTableView.hidden = YES;
-        self.navBarItem.rightBarButtonItem = self.editChildButton;
         if (segmentedControl.selectedSegmentIndex == 1) {
             [self displayChildInfo_Disability];
         } else
@@ -297,12 +292,13 @@ Update the UI to reflect the child set on initial load.
 - (void)displayChildInfo_Medication
 {
     _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
-    _childLabel2.text = @"";
-    _childLabel3.text = @"";
-    _childLabel4.text = @"";
-    
-    _childLabel5.text = @"";
-    _childLabel6.text = @"";;
+    MedicationModel *med = self.child.medications[0];
+    _childLabel2.text = [NSString stringWithFormat:@"Name: %@", med.name ];
+//    _childLabel3.text = [NSString stringWithFormat:@"Dosag: %@", self.child.medication.dosage ];
+//    _childLabel4.text = [NSString stringWithFormat:@"Interval: %@", self.child.medication.interval ];
+//    
+//    _childLabel5.text = [NSString stringWithFormat:@"Start Date: %@", self.child.medication.strat];
+//    _childLabel6.text = [NSString stringWithFormat:@"End Date: %@", self.child.medication.end];
     _childLabel7.text = @"";
     _childLabel8.text = @"";
 
