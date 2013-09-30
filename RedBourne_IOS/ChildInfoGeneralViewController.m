@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Edit Child Information";
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(saveUserWhenClosing)
                                                      name:@"UIApplicationDidEnterBackgroundNotification"
@@ -48,11 +49,13 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
+    //reuseable frame for elements
     CGRect frame = CGRectMake(50,40,130,30);
     
     /*
      Personal Info
      */
+    
     UILabel *generalTitleGeneralInfo = [[UILabel alloc] initWithFrame:frame];
     generalTitleGeneralInfo.text = @"Personal Info";
     [self.view addSubview:generalTitleGeneralInfo];
@@ -97,6 +100,7 @@
     /*
      Additional Info
      */
+    
     frame = CGRectMake(50,190,150,30);
     UILabel *generalTitleAdditionalInfo = [[UILabel alloc] initWithFrame:frame];
     generalTitleAdditionalInfo.text = @"Additional Info";
@@ -129,6 +133,7 @@
     /*
      Photo uploading
      */
+
     frame = CGRectMake(50,355,120,30);
     UILabel *generalTitlePhotoUpload = [[UILabel alloc] initWithFrame:frame];
     generalTitlePhotoUpload.text = @"Photo Upload";
@@ -147,6 +152,10 @@
     photImage = nil;
     [self.view addSubview:photImage];
     
+    
+    
+        
+       
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     saveButton.frame = CGRectMake(160,650,160,30);
     [saveButton setTitle:@"Save Name" forState:UIControlStateNormal];
@@ -161,7 +170,12 @@
     [self.view addSubview:cancelButton];
     
 
+//    frame = CGRectMake(0.0, 12.0, 94.0, 27.0);
+//    _switchCtl = [[UISwitch alloc] initWithFrame:frame];
+//    [_switchCtl addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+    
     _switchCtl.backgroundColor = [UIColor clearColor];
+    
     [self.view addSubview:_switchCtl];
 
 }
@@ -174,16 +188,23 @@
     self.child.medicareNumber = self.medicareNumberField.text;
     self.child.registrationDate = self.registrationDate.text;
     
+    
+    
+    NSLog(@"%@ %@", self.child.firstName, self.child.surName);
+    NSLog(@"%@", self.child.description);
+
+    
     [ChildModel saveChild:self.child];
+    
     [self dismissViewControllerAnimated:YES completion:nil];    
     
 }
 
-- (void)cancelButton {
+- (void)cancelButton{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)saveChildWhenClosing {
+-(void)saveChildWhenClosing{
     [ChildModel saveChild:self.child];
 }
 
@@ -194,12 +215,14 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)switchAction:(id)sender {
+- (void)switchAction:(id)sender
+{
     NSLog(@"switchAction: value = %d", [sender isOn]);
 }
 
@@ -207,11 +230,12 @@
 
 - (UISwitch *)switchCtl
 {
-    if (_switchCtl == nil) {
+    if (_switchCtl == nil)
+    {
         CGRect frame = CGRectMake(0.0, 12.0, 94.0, 27.0);
         _switchCtl = [[UISwitch alloc] initWithFrame:frame];
         [_switchCtl addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-    
+        
         // in case the parent view draws with a custom color or gradient, use a transparent color
         _switchCtl.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_switchCtl];

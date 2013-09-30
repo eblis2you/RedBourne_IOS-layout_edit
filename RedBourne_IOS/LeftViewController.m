@@ -39,8 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self fillDataWithJSON];
-   // [self fillDataHardCode];
+    
+    [self fillDataHardCode];
     
     [[UIBarItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
@@ -136,7 +136,7 @@
 
 -(void)fillDataWithJSON
 {
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/3741832/develop/childInfo_med.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/3741832/develop/childInfo.json"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     AFJSONRequestOperation *operation =
@@ -146,19 +146,6 @@
          NSMutableArray *temp = [[NSMutableArray alloc] init];
          for (NSDictionary *child in JSON)
          {
-             
-             NSMutableArray *tempMedicationArray = [[NSMutableArray alloc] init];
-             MedicationModel *med;
-             for ( NSDictionary *medication in child[@"medication"]) {
-                 med = [[MedicationModel alloc] initWithName:medication[@"name"]
-                                                                       dosage:medication[@"dosage"]
-                                                                     interval:medication[@"interval"]
-                                                                        start:medication[@"strat"]
-                                                                          end:medication[@"end"]];
-                 
-                 [tempMedicationArray addObject:med];
-             }
-             
              ChildModel *childModel = [[ChildModel alloc] initWithFirstName:child[@"firstName"]
                                                                     surName:child[@"surName"]
                                                                         crn:child[@"crn"]
@@ -174,14 +161,10 @@
                                                        specialNeedsComments:child[@"specialNeedsComments"]
                                                                   thumbnail:child[@"thumbnail"]
                                                                    filename:child[@"filename"]
-                                                                medications:child[@"medication"]];
-             
-
+                                                                 medications:child[@"medication"]];
              
              
              [temp addObject:childModel];
-             NSLog(@"-----------------");
-
          }
          self.childList = [[NSMutableArray alloc] initWithArray:temp];
          
