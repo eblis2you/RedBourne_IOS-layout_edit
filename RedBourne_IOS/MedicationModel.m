@@ -37,7 +37,7 @@
 
 -(NSString *)description
 {
- return [NSString stringWithFormat:@"<ChildMode: %p>\nName: %@\naDosage: %@\naInterval: %@\nstart: %@\nend: %@", self, self.name, self.dosage, self.interval, self.strat, self.end];
+ return [NSString stringWithFormat:@"<Medication: %p>\nName: %@\naDosage: %@\naInterval: %@\nstart: %@\nend: %@", self, self.name, self.dosage, self.interval, self.strat, self.end];
 }
 
 

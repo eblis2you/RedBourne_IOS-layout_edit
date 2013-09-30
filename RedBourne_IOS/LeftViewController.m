@@ -40,11 +40,13 @@
 {
     [super viewDidLoad];
     
-    [self fillDataHardCode];
+//    [self fillDataHardCode];
+    [self fillDataWithJSON];
+    
     
     [[UIBarItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:220.0/255.0 green:104.0/255.0 blue:1.0/255.0 alpha:1.0], UITextAttributeTextColor,
+      [UIColor colorWithRed:0.863 green:0.408 blue:0.004 alpha:1.000], UITextAttributeTextColor,
       [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], UITextAttributeTextShadowColor,
       [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset,
       [UIFont fontWithName:@"AmericanTypewriter" size:0.0], UITextAttributeFont,nil]
@@ -136,7 +138,7 @@
 
 -(void)fillDataWithJSON
 {
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/3741832/develop/childInfo.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/3741832/develop/childInfo_med.json"];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     
     AFJSONRequestOperation *operation =
@@ -146,6 +148,16 @@
          NSMutableArray *temp = [[NSMutableArray alloc] init];
          for (NSDictionary *child in JSON)
          {
+             NSMutableArray *tempMedicationArray = [[NSMutableArray alloc] init];
+             MedicationModel *med = [[MedicationModel alloc] init];
+             for (NSDictionary *medication in child[@"medication"]) {
+                 med = [[MedicationModel alloc] initWithName:medication[@"name"]
+                                                      dosage:medication[@"dosage"]
+                                                    interval:medication[@"interval"]
+                                                       start:medication[@"start"]
+                                                         end:medication[@"end"]];
+                 [tempMedicationArray addObject:med];
+             }
              ChildModel *childModel = [[ChildModel alloc] initWithFirstName:child[@"firstName"]
                                                                     surName:child[@"surName"]
                                                                         crn:child[@"crn"]
@@ -161,9 +173,7 @@
                                                        specialNeedsComments:child[@"specialNeedsComments"]
                                                                   thumbnail:child[@"thumbnail"]
                                                                    filename:child[@"filename"]
-                                                                 medications:child[@"medication"]];
-             
-             
+                                                                medications:tempMedicationArray];
              [temp addObject:childModel];
          }
          self.childList = [[NSMutableArray alloc] initWithArray:temp];
