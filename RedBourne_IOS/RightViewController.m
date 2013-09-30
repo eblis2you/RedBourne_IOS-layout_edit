@@ -41,6 +41,7 @@
     }
     MedicationModel *med = self.localMedicationList[indexPath.row];
     cell.textLabel.text =med.name;
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
 
@@ -88,6 +89,7 @@
 //    [self.view setBackgroundColor:bgColor];
     
     self.childMedicationListTableView.hidden = YES;
+    
 
 }
 
@@ -293,7 +295,7 @@ Update the UI to reflect the child set on initial load.
 
 - (void)displayChildInfo_Medication
 {
-    _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
+    _childLabel1.text = [NSString stringWithFormat:@"Medication List"];
     _childLabel2.text = @"";
     _childLabel3.text = @"";
     _childLabel4.text = @"";
