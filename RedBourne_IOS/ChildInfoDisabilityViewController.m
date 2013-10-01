@@ -90,7 +90,6 @@
         self.disabilityStartDateTextField.backgroundColor = [UIColor lightGrayColor];
         self.disabilityCommentTextView.editable = NO;
         self.disabilityCommentTextView.backgroundColor = [UIColor lightGrayColor];
-        NSLog(@"disable");
     }
     else if (self.disabilitySwitch.isOn)
     {
@@ -98,7 +97,6 @@
         self.disabilityStartDateTextField.backgroundColor = [UIColor clearColor];
         self.disabilityCommentTextView.editable = YES;
         self.disabilityCommentTextView.backgroundColor = [UIColor clearColor];
-        NSLog(@"enable");
     }
 }
 
@@ -110,7 +108,6 @@
         self.specialNeedStartDateTextField.backgroundColor = [UIColor lightGrayColor];
         self.specialNeedsCommentTextView.editable = NO;
         self.specialNeedsCommentTextView.backgroundColor = [UIColor lightGrayColor];
-        NSLog(@"disable");
     }
     else if (self.specialNeedSwitch.isOn)
     {
@@ -118,8 +115,6 @@
         self.specialNeedStartDateTextField.backgroundColor = [UIColor clearColor];
         self.specialNeedsCommentTextView.editable = YES;
         self.specialNeedsCommentTextView.backgroundColor = [UIColor clearColor];
-
-        NSLog(@"enable");
     }
 }
 
@@ -177,9 +172,7 @@
             break;
     }
     
-    
     [ChildModel saveChild:self.child];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

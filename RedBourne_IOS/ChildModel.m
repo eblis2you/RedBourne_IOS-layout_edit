@@ -32,7 +32,11 @@
   specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename
+<<<<<<< HEAD
             medication:(MedicationModel *)aMedication
+=======
+            medications:(NSMutableArray *)aMedication
+>>>>>>> medication
 {
     self = [super init];
     if (self)
@@ -52,7 +56,11 @@
         self.specialNeeds = theSpecialNeeds;
         self.specialNeedsStartDate = theDisabilityStartDate;
         self.specialNeedsComments = aSpecialNeedsComments;
+<<<<<<< HEAD
         self.medication = aMedication;
+=======
+        self.medications = aMedication;
+>>>>>>> medication
     }
     return self;
 };

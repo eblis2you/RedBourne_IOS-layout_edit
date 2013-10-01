@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChildModel.h"
+#import "MedicationModel.h"
+
 
 @interface ChildInfoMedicationViewController : UIViewController
 
+@property (retain, nonatomic) MedicationModel *MedicationNeedEdit;
+
+
+
+
+
 @end
+

@@ -22,12 +22,32 @@
             start:(NSString *)theStart
               end:(NSString *)theEnd
 {
+<<<<<<< HEAD
     
+=======
+    self= [super init];
+    if (self) {
+        self.name = aName;
+        self.dosage = aDosage;
+        self.interval = aInterval;
+        self.strat = theStart;
+        self.end = theEnd;
+    }
+>>>>>>> medication
     
     return self;
     
 }
 
+<<<<<<< HEAD
+=======
+-(NSString *)description
+{
+ return [NSString stringWithFormat:@"<Medication: %p>\nName: %@\naDosage: %@\naInterval: %@\nstart: %@\nend: %@", self, self.name, self.dosage, self.interval, self.strat, self.end];
+}
+
+
+>>>>>>> medication
 +(void)save:(MedicationModel *)aMedicationModel
 {
 

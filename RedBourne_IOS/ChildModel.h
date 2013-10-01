@@ -9,6 +9,10 @@
 
 #import <Foundation/Foundation.h>
 #import "MedicationModel.h"
+<<<<<<< HEAD
+=======
+
+>>>>>>> medication
 
 @interface ChildModel : NSObject
 
@@ -44,11 +48,16 @@
 //@property (strong, nonatomic) IndigenousCode *indigenousCode;
 //@property (strong, nonatomic) SchoolStatus *schoolStatus;
 
+
 @property (strong, nonatomic) NSString *thumbnail;
 @property (strong, nonatomic) NSString *filename;
 
 
+<<<<<<< HEAD
 @property (strong, nonatomic) MedicationModel *medication;
+=======
+@property (strong, nonatomic) NSMutableArray *medications;
+>>>>>>> medication
 
 
 -(id)initWithFirstName:(NSString *)aFirstName
@@ -66,7 +75,11 @@
   specialNeedsComments:(NSString *)aSpecialNeedsComments
              thumbnail:(NSString *)aThumbnail
               filename:(NSString *)aFilename
+<<<<<<< HEAD
             medication:(MedicationModel *)aMedication;
+=======
+           medications:(NSMutableArray *)aMedicationList;
+>>>>>>> medication
 
 //-(id)initWithJSON;
 

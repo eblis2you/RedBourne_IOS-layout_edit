@@ -15,21 +15,53 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface RightViewController()
+@property (weak, nonatomic) IBOutlet UITableView *childMedicationListTableView;
+@property NSArray *localMedicationList;
+@property  UIBarButtonItem *editChildButton;
 @end
 
 
 @implementation RightViewController
 
+#pragma mark - Table View Data Source
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.localMedicationList.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    MedicationModel *med = self.localMedicationList[indexPath.row];
+    cell.textLabel.text =med.name;
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    ChildInfoMedicationViewController *medicationEditVC = [[ChildInfoMedicationViewController alloc] init];
+    medicationEditVC.MedicationNeedEdit = [self.localMedicationList objectAtIndex:indexPath.row];
+    medicationEditVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:medicationEditVC animated:YES completion:nil];
+}
 
 
 #pragma mark - View Lifecycle
-// segmented control as the custom title view
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 	NSArray *segmentTextContent = [NSArray arrayWithObjects:
                                    NSLocalizedString(@"GENERAL", @""),
                                    NSLocalizedString(@"DISABILITY", @""),
@@ -43,10 +75,15 @@
 	[self.segmentedControl addTarget:self
                               action:@selector(segmentAction:)
                     forControlEvents:UIControlEventValueChanged];
-	/*
-     Visual customization
-     */
     
+<<<<<<< HEAD
+=======
+    self.editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editChildInfo)];
+  
+    self.navBarItem.rightBarButtonItem = self.editChildButton;
+    self.navBarItem.titleView = self.segmentedControl;
+
+>>>>>>> medication
 //    UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.jpg"];
 //    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 //    [self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
@@ -54,11 +91,17 @@
 //    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
 //    [self.view setBackgroundColor:bgColor];
     
+<<<<<<< HEAD
     self.navBarItem.titleView = self.segmentedControl;
     UIBarButtonItem *editChildButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                      target:self
                                                                                 action:@selector(editChildInfo)];
     self.navBarItem.rightBarButtonItem = editChildButton;
+=======
+    self.childMedicationListTableView.hidden = YES;
+    
+
+>>>>>>> medication
 }
 
 
@@ -70,12 +113,7 @@ Update the UI to reflect the child set on initial load.
 {
     [super viewWillAppear:animated];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(refreshUI)
-//                                                 name:@"fillDataWithJSONFinishedLoading"
-//                                               object:nil];
     [self refreshUI];
-    
 }
 
 
@@ -152,7 +190,13 @@ Update the UI to reflect the child set on initial load.
 #pragma mark - New Methods
 -(void)refreshUI
 {
-   
+    if (self.segmentedControl.selectedSegmentIndex == 2) {
+        [self displayChildInfo_Medication];
+    } else if (self.segmentedControl.selectedSegmentIndex == 1){
+        [self displayChildInfo_Disability];
+    } else {
+        [self displayChildInfo_General];
+    }
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
             [self displayChildInfo_General];
@@ -172,25 +216,19 @@ Update the UI to reflect the child set on initial load.
 
     [self.iconImageView removeFromSuperview];
     self.iconImageView = nil;
-
     self.iconImageView = [[UIImageView alloc] init];
-    self.iconImageView.frame = CGRectMake(20, 60, 120, 136);
-    
+    self.iconImageView.frame = CGRectMake(20, 75, 120, 136);
     [self.view addSubview:self.iconImageView];
-    
     self.iconImageView.image = nil;
-    
     NSURL *imageURL = [NSURL URLWithString:self.child.filename];
-    
     UIImage *placeholder = [UIImage imageNamed:@"placeholder.jpg"];
-    
-    
     [self.iconImageView setImageWithURL:imageURL placeholderImage:placeholder];
 
-    
 
-
-
+    if (_child != nil) {
+        self.localMedicationList = _child.medications;
+    }
+    [self.childMedicationListTableView reloadData];
     
 }
 
@@ -222,22 +260,21 @@ Update the UI to reflect the child set on initial load.
 
 - (IBAction)segmentAction:(id)sender
 {
-	// The segmented control was clicked, handle it here
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     
-    switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            [self displayChildInfo_General];
-            break;
-        case 1:
+    if (segmentedControl.selectedSegmentIndex == 2) {
+        self.childMedicationListTableView.hidden = NO;
+        self.navBarItem.rightBarButtonItem = nil;
+        [self displayChildInfo_Medication];
+    } else {
+        self.childMedicationListTableView.hidden = YES;
+        self.navBarItem.rightBarButtonItem = self.editChildButton;
+        if (segmentedControl.selectedSegmentIndex == 1) {
             [self displayChildInfo_Disability];
-            break;
-        case 2:
-            [self displayChildInfo_Medication];
-            break;
-        default:
-            break;
+        } else
+            [self displayChildInfo_General];
     }
+    
 }
 
 - (void)displayChildInfo_General
@@ -269,6 +306,7 @@ Update the UI to reflect the child set on initial load.
 
 - (void)displayChildInfo_Medication
 {
+<<<<<<< HEAD
     _childLabel1.text = [NSString stringWithFormat:@"Medication page"];
     _childLabel2.text = @"";
     _childLabel3.text = @"";
@@ -280,15 +318,19 @@ Update the UI to reflect the child set on initial load.
     _childLabel8.text = @"";
 
 
+=======
+    _childLabel1.text = [NSString stringWithFormat:@"Medication List"];
+    _childLabel2.text = @"";
+    _childLabel3.text = @"";
+    _childLabel4.text = @"";
+    _childLabel5.text = @"";
+>>>>>>> medication
+
+    _childLabel6.text = @"";
+    _childLabel7.text = @"";
 
 }
 
-- (void) fillProfileViews;
-{
 
-    
-
-    
-}
 
 @end
