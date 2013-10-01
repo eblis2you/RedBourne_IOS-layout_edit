@@ -43,7 +43,7 @@
 
 +(void)save:(MedicationModel *)aMedicationModel
 {
-
+    NSLog(@"test");
 }
 
 @end
