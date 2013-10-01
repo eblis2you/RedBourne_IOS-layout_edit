@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface MedicationModel : NSObject
 
 @property (strong, nonatomic) NSString *name;
