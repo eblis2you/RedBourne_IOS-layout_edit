@@ -136,6 +136,14 @@
                                                        start:medication[@"start"]
                                                          end:medication[@"end"]];
                  [tempMedicationArray addObject:med];
+                 NSLog(@"before : %@", medication[@"start"]);
+                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                 [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+                 NSDate *date = [dateFormatter dateFromString:medication[@"start"]];
+                 NSLog(@"after %@", date);
+                 [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+                 NSLog(@"after format:  %@", [dateFormatter stringFromDate:date]);
+
              }
              ChildModel *childModel = [[ChildModel alloc] initWithFirstName:child[@"firstName"]
                                                                     surName:child[@"surName"]
