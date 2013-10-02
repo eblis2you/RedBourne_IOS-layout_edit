@@ -8,7 +8,7 @@
 
 #import "ChildInfoMedicationViewController.h"
 
-@interface ChildInfoMedicationViewController ()
+@interface ChildInfoMedicationViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *medNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *medDosageTextField;
@@ -17,12 +17,19 @@
 @property (weak, nonatomic) IBOutlet UITextField *medEndDateTextField;
 
 @property (strong, nonatomic) IBOutlet UIPickerView *intervalTypePicker;
-@property (strong, nonatomic) NSArray *itemArray;
+@property (strong, nonatomic) NSArray *intervalTypeArray;
 
 @end
 
+
+
+
 @implementation ChildInfoMedicationViewController
 @synthesize MedicationNeedEdit;
+
+#pragma mark - UIPickerView
+
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,7 +42,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    
+
     
 }
 
@@ -54,9 +61,21 @@
     self.medStartDateTextField.text = MedicationNeedEdit.strat;
     self.medEndDateTextField.text = MedicationNeedEdit.end;
     
-    self.itemArray = [[NSArray alloc] initWithObjects:@"Hourly",@"Times", nil];
+
+
+    self.intervalTypeArray = [[NSArray alloc] initWithObjects:@"hourly",@"times", nil];
+
+    [self.intervalTypePicker reloadAllComponents];
     
     
+    if ([MedicationNeedEdit.interval isEqual: @"hourly"]) {
+        [self.intervalTypePicker selectRow:0 inComponent:0 animated:NO];
+    } else
+        [self.intervalTypePicker selectRow:1 inComponent:0 animated:NO];
+    
+    
+
+
     
 }
 
@@ -65,18 +84,20 @@
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [self.itemArray count];
+    return [self.intervalTypeArray count];
 }
 
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.itemArray objectAtIndex:row];
+    return [self.intervalTypeArray objectAtIndex:row];
 }
 
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    NSLog(@"Chosen item: %@", [self.itemArray objectAtIndex:row]);
     
+    NSLog(@"Chosen item: %@", [self.intervalTypeArray objectAtIndex:row]);
+    MedicationNeedEdit.interval = [self.intervalTypeArray objectAtIndex:row];
+
 }
 #pragma mark - IBAction for button
 
@@ -85,9 +106,9 @@
     
     MedicationNeedEdit.name = self.medNameTextField.text;
     MedicationNeedEdit.dosage = self.medDosageTextField.text ;
-    MedicationNeedEdit.interval = self.medIntervalTextField.text;
     MedicationNeedEdit.strat = self.medStartDateTextField.text;
     MedicationNeedEdit.end = self.medEndDateTextField.text ;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 
     
