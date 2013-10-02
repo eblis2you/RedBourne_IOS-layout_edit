@@ -19,6 +19,11 @@
 @property (strong, nonatomic) IBOutlet UIPickerView *intervalTypePicker;
 @property (strong, nonatomic) NSArray *intervalTypeArray;
 
+@property (strong, nonatomic) IBOutlet UIDatePicker *startDatePicker;
+@property (strong, nonatomic) IBOutlet UIDatePicker *endDatePicker;
+
+
+
 @end
 
 
@@ -42,8 +47,17 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-
     
+    NSString *testDateString = @"11/09/2013";
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MM/yyyy"];
+    NSDate *date = [dateFormat dateFromString:testDateString];
+    
+    NSLog(@"before: %@: ",[dateFormat stringFromDate:date]);
+    
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSLog(@"after: %@: ",[dateFormat stringFromDate:date]);
 }
 
 
@@ -74,6 +88,9 @@
         [self.intervalTypePicker selectRow:1 inComponent:0 animated:NO];
     
     
+    
+    [self.startDatePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
+
 
 
     
@@ -99,6 +116,15 @@
     MedicationNeedEdit.interval = [self.intervalTypeArray objectAtIndex:row];
 
 }
+
+-(void)dateChange: (id)sender {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd-MM-yyyy"];
+    NSLog(@"You choose: %@", [df stringFromDate:self.startDatePicker.date]);
+    
+}
+
+
 #pragma mark - IBAction for button
 
 
