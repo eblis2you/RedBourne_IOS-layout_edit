@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *medStartDateTextField;
 @property (weak, nonatomic) IBOutlet UITextField *medEndDateTextField;
 
+@property (strong, nonatomic) IBOutlet UIPickerView *intervalTypePicker;
+@property (strong, nonatomic) NSArray *itemArray;
+
 @end
 
 @implementation ChildInfoMedicationViewController
@@ -36,6 +39,11 @@
     
 }
 
+
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,14 +54,30 @@
     self.medStartDateTextField.text = MedicationNeedEdit.strat;
     self.medEndDateTextField.text = MedicationNeedEdit.end;
     
-    NSLog(@"%@",MedicationNeedEdit.description);
-
+    self.itemArray = [[NSArray alloc] initWithObjects:@"Hourly",@"Times", nil];
+    
+    
     
 }
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [self.itemArray count];
+}
 
 
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [self.itemArray objectAtIndex:row];
+}
 
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    NSLog(@"Chosen item: %@", [self.itemArray objectAtIndex:row]);
+    
+}
 #pragma mark - IBAction for button
 
 

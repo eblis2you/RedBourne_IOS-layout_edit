@@ -11,7 +11,7 @@
 #import "MedicationModel.h"
 
 
-@interface ChildInfoMedicationViewController : UIViewController
+@interface ChildInfoMedicationViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (retain, nonatomic) MedicationModel *MedicationNeedEdit;
 
