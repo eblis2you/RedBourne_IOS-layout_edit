@@ -19,8 +19,8 @@
 -(id)initWithName:(NSString *)aName
            dosage:(NSString *)aDosage
          interval:(NSString *)aInterval
-            start:(NSString *)theStart
-              end:(NSString *)theEnd
+            start:(NSDate *)theStart
+              end:(NSDate *)theEnd
 {
     self= [super init];
     if (self) {

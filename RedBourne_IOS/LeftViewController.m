@@ -129,20 +129,28 @@
          {
              NSMutableArray *tempMedicationArray = [[NSMutableArray alloc] init];
              MedicationModel *med = [[MedicationModel alloc] init];
+             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+
              for (NSDictionary *medication in child[@"medication"]) {
+                 
+                 [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+                 
                  med = [[MedicationModel alloc] initWithName:medication[@"name"]
                                                       dosage:medication[@"dosage"]
                                                     interval:medication[@"interval"]
-                                                       start:medication[@"start"]
-                                                         end:medication[@"end"]];
-                 [tempMedicationArray addObject:med];
-                 NSLog(@"before : %@", medication[@"start"]);
-                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                 [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+                                                       start:nil
+                                                         end:nil];
+                 
                  NSDate *date = [dateFormatter dateFromString:medication[@"start"]];
-                 NSLog(@"after %@", date);
-                 [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-                 NSLog(@"after format:  %@", [dateFormatter stringFromDate:date]);
+                 med.strat = date;
+                 date = [dateFormatter dateFromString:medication[@"end"]];
+                 med.end = date;
+                 NSLog(@"%@ : %@", med.strat.description, med.end.description);
+                 NSLog(@"%@", med.description);
+                 
+                 [tempMedicationArray addObject:med];
+                 
+
 
              }
              ChildModel *childModel = [[ChildModel alloc] initWithFirstName:child[@"firstName"]

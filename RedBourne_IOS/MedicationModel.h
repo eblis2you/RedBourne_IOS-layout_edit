@@ -15,14 +15,14 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *dosage;
 @property (strong, nonatomic) NSString *interval;
-@property (strong, nonatomic) NSString *strat;
-@property (strong, nonatomic) NSString *end;
+@property (strong, nonatomic) NSDate *strat;
+@property (strong, nonatomic) NSDate *end;
 
 -(id)initWithName:(NSString *)aName
            dosage:(NSString *)aDosage
          interval:(NSString *)aInterval
-            start:(NSString *)theStart
-              end:(NSString *)theEnd;
+            start:(NSDate *)theStart
+              end:(NSDate *)theEnd;
 
 +(void)save:(MedicationModel *)aMedicationModel;
 
