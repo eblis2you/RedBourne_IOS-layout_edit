@@ -27,8 +27,6 @@
 @end
 
 
-
-
 @implementation ChildInfoMedicationViewController
 @synthesize MedicationNeedEdit;
 
@@ -48,23 +46,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    NSString *testDateString = @"11/09/2013";
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd/MM/yyyy"];
-    
-    
-    NSDate *date = [dateFormat dateFromString:testDateString];
-    
-    NSLog(@"before: %@: ",[dateFormat stringFromDate:date]);
-    
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    
-    NSLog(@"after: %@: ",[dateFormat stringFromDate:date]);
+
 }
-
-
-
-
 
 
 - (void)viewDidLoad
@@ -97,7 +80,6 @@
     
     
     
-    [self.startDatePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
 
 
 
@@ -118,19 +100,6 @@
 }
 
 
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
-    NSLog(@"Chosen item: %@", [self.intervalTypeArray objectAtIndex:row]);
-    MedicationNeedEdit.interval = [self.intervalTypeArray objectAtIndex:row];
-
-}
-
--(void)dateChange: (id)sender {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"dd-MM-yyyy"];
-    NSLog(@"You choose: %@", [df stringFromDate:self.startDatePicker.date]);
-    
-}
 
 
 #pragma mark - IBAction for button
@@ -140,9 +109,12 @@
     
     MedicationNeedEdit.name = self.medNameTextField.text;
     MedicationNeedEdit.dosage = self.medDosageTextField.text ;
-    MedicationNeedEdit.strat = self.medStartDateTextField.text;
-    MedicationNeedEdit.end = self.medEndDateTextField.text ;
+    MedicationNeedEdit.strat = self.startDatePicker.date;
+    MedicationNeedEdit.end = self.endDatePicker.date ;
+    NSInteger selectedRow = [self.intervalTypePicker selectedRowInComponent:0];
+    MedicationNeedEdit.interval = [self.intervalTypeArray objectAtIndex:selectedRow];
     
+    NSLog(@"%d", selectedRow);
     [self dismissViewControllerAnimated:YES completion:nil];
 
     

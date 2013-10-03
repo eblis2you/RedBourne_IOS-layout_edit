@@ -61,51 +61,5 @@
             endingLineNumber = "36">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RedBourne_IOS/LeftViewController.m"
-            timestampString = "402305104.194473"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LeftViewController viewDidLoad]"
-                  moduleName = "RedBourne_IOS"
-                  urlString = "file://localhost/Users/Jerry/git/RedBourne/RedBourne_IOS-layout_edit/RedBourne_IOS/LeftViewController.m"
-                  timestampString = "402305106.602657"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "227">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LeftViewController viewDidLoad]"
-                  moduleName = "RedBourne_IOS"
-                  urlString = "file://localhost/Users/Jerry/git/RedBourne/RedBourne_IOS-layout_edit/RedBourne_IOS/LeftViewController.m"
-                  timestampString = "402305106.602857"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "469">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
