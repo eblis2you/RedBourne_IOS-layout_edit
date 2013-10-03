@@ -51,6 +51,8 @@
     NSString *testDateString = @"11/09/2013";
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"dd/MM/yyyy"];
+    
+    
     NSDate *date = [dateFormat dateFromString:testDateString];
     
     NSLog(@"before: %@: ",[dateFormat stringFromDate:date]);
@@ -69,12 +71,18 @@
 {
     [super viewDidLoad];
     
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MM/yyyy"];
+    
     self.medNameTextField.text = MedicationNeedEdit.name;
     self.medDosageTextField.text = MedicationNeedEdit.dosage;
     self.medIntervalTextField.text = MedicationNeedEdit.interval;
-    self.medStartDateTextField.text = MedicationNeedEdit.strat;
-    self.medEndDateTextField.text = MedicationNeedEdit.end;
     
+    NSDate *date = MedicationNeedEdit.strat;
+    [self.startDatePicker setDate:date];
+    
+    date = MedicationNeedEdit.end;
+    [self.endDatePicker setDate:date];
 
 
     self.intervalTypeArray = [[NSArray alloc] initWithObjects:@"hourly",@"times", nil];

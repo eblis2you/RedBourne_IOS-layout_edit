@@ -125,15 +125,17 @@
                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
      {
          NSMutableArray *temp = [[NSMutableArray alloc] init];
+         
          for (NSDictionary *child in JSON)
          {
              NSMutableArray *tempMedicationArray = [[NSMutableArray alloc] init];
              MedicationModel *med = [[MedicationModel alloc] init];
              NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-
+             NSDate *date = [[NSDate alloc] init];
+             [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+             
              for (NSDictionary *medication in child[@"medication"]) {
                  
-                 [dateFormatter setDateFormat:@"dd/MM/yyyy"];
                  
                  med = [[MedicationModel alloc] initWithName:medication[@"name"]
                                                       dosage:medication[@"dosage"]
@@ -141,17 +143,12 @@
                                                        start:nil
                                                          end:nil];
                  
-                 NSDate *date = [dateFormatter dateFromString:medication[@"start"]];
+                 date = [dateFormatter dateFromString:medication[@"start"]];
                  med.strat = date;
                  date = [dateFormatter dateFromString:medication[@"end"]];
                  med.end = date;
-                 NSLog(@"%@ : %@", med.strat.description, med.end.description);
-                 NSLog(@"%@", med.description);
-                 
                  [tempMedicationArray addObject:med];
                  
-
-
              }
              ChildModel *childModel = [[ChildModel alloc] initWithFirstName:child[@"firstName"]
                                                                     surName:child[@"surName"]
