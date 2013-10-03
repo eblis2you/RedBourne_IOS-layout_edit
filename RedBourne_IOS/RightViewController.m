@@ -40,7 +40,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     MedicationModel *med = self.localMedicationList[indexPath.row];
-    cell.textLabel.text =med.name;
+    NSString *text = [[NSString alloc] initWithFormat:@"%@     %@     %@", med.name, med.interval, med.dosage];
+    cell.textLabel.text =text;
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }

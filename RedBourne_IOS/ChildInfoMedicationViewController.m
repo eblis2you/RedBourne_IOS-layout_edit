@@ -60,18 +60,14 @@
     self.medNameTextField.text = MedicationNeedEdit.name;
     self.medDosageTextField.text = MedicationNeedEdit.dosage;
     self.medIntervalTextField.text = MedicationNeedEdit.interval;
-    
     NSDate *date = MedicationNeedEdit.strat;
     [self.startDatePicker setDate:date];
-    
     date = MedicationNeedEdit.end;
     [self.endDatePicker setDate:date];
 
-
-    self.intervalTypeArray = [[NSArray alloc] initWithObjects:@"hourly",@"times", nil];
-
-    [self.intervalTypePicker reloadAllComponents];
     
+    self.intervalTypeArray = [[NSArray alloc] initWithObjects:@"hourly",@"times", nil];
+    [self.intervalTypePicker reloadAllComponents];
     
     if ([MedicationNeedEdit.interval isEqual: @"hourly"]) {
         [self.intervalTypePicker selectRow:0 inComponent:0 animated:NO];
@@ -79,12 +75,11 @@
         [self.intervalTypePicker selectRow:1 inComponent:0 animated:NO];
     
     
-    
-
-
 
     
 }
+
+#pragma mark - UIPickerView:intervalTypePicker dataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
@@ -93,7 +88,6 @@
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return [self.intervalTypeArray count];
 }
-
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return [self.intervalTypeArray objectAtIndex:row];
@@ -104,7 +98,6 @@
 
 #pragma mark - IBAction for button
 
-
 - (IBAction)saveButton:(UIButton *)sender {
     
     MedicationNeedEdit.name = self.medNameTextField.text;
@@ -114,7 +107,6 @@
     NSInteger selectedRow = [self.intervalTypePicker selectedRowInComponent:0];
     MedicationNeedEdit.interval = [self.intervalTypeArray objectAtIndex:selectedRow];
     
-    NSLog(@"%d", selectedRow);
     [self dismissViewControllerAnimated:YES completion:nil];
 
     
