@@ -124,13 +124,32 @@ Update the UI to reflect the child set on initial load.
             QRootElement *root = [[QRootElement alloc] init];
             root.title = @"General Information";
             root.grouped = YES;
-            QSection *section = [[QSection alloc] initWithTitle:@"Personal Infor"];
             
-            QLabelElement *fnameLabel = [[QLabelElement alloc] initWithTitle:@"First Name" Value:nil];
+            QSection *sectionPersonalInfo = [[QSection alloc] initWithTitle:@"Personal Information"];
+            QEntryElement *fNameLable = [[QEntryElement alloc] initWithTitle:@"First name: " Value:nil];
+            QEntryElement *sNameLable = [[QEntryElement alloc] initWithTitle:@"Sur name: " Value:nil];
+
+            [sectionPersonalInfo addElement:fNameLable];
+            [sectionPersonalInfo addElement:sNameLable];
             
             
-            [root addSection:section];
-            [section addElement:fnameLabel];
+            QSection *sectionAdditionalInfo = [[QSection alloc] initWithTitle:@"Additional Information"];
+            QEntryElement *medCareNumLable = [[QEntryElement alloc] initWithTitle:@"Medication number: " Value:nil];
+            QDateTimeInlineElement *registrationDateLable = [[QDateTimeInlineElement alloc] initWithTitle:@"Registration date: "
+                                                                                                     date:[NSDate date] andMode:UIDatePickerModeDate];
+            [sectionAdditionalInfo addElement:medCareNumLable];
+            [sectionAdditionalInfo addElement:registrationDateLable];
+            
+            QSection *sectionUpload = [[QSection alloc] initWithTitle:@"Uploading Photot"];
+            QLabelElement *chooseFromPhotoLabel = [[QLabelElement alloc] initWithTitle:@"Choose from Photo" Value:nil];
+            
+            [sectionUpload addElement:chooseFromPhotoLabel];
+
+        	
+            [root addSection:sectionPersonalInfo];
+            [root addSection:sectionAdditionalInfo];
+            [root addSection:sectionUpload];
+
             
             UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
             
@@ -139,6 +158,7 @@ Update the UI to reflect the child set on initial load.
             
             
             navigation.modalPresentationStyle = UIModalPresentationPageSheet;
+
             [self presentViewController:navigation animated:YES completion:nil];
             
             
