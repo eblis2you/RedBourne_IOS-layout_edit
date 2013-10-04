@@ -139,7 +139,6 @@ Update the UI to reflect the child set on initial load.
             [sectionPersonalInfo addElement:fNameLable];
             [sectionPersonalInfo addElement:sNameLable];
             [sectionPersonalInfo addElement:dobDateLable];
-
             
             QSection *sectionAdditionalInfo = [[QSection alloc] initWithTitle:@"Additional Information"];
             QEntryElement *medCareNumLable = [[QEntryElement alloc] initWithTitle:@"Medication number: "
@@ -155,7 +154,7 @@ Update the UI to reflect the child set on initial load.
             QLabelElement *chooseFromPhotoLabel = [[QLabelElement alloc] initWithTitle:@"Choose from Photo" Value:@"photo"];
             
             [sectionUpload addElement:chooseFromPhotoLabel];
-
+            
         	
             [root addSection:sectionPersonalInfo];
             [root addSection:sectionAdditionalInfo];
@@ -166,7 +165,7 @@ Update the UI to reflect the child set on initial load.
             
             navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController)];
 
-            
+            navigation.navigationBar.topItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController)];
             
             navigation.modalPresentationStyle = UIModalPresentationPageSheet;
 
@@ -307,9 +306,12 @@ Update the UI to reflect the child set on initial load.
 
 - (void)displayChildInfo_General
 {
-    _childLabel1.text = [NSString stringWithFormat:@"Date of Birth:	 %@", _child.dateOfBirth];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateStyle:NSDateFormatterLongStyle];
+    
+    _childLabel1.text = [NSString stringWithFormat:@"Date of Birth:	 %@", [df stringFromDate:self.child.dateOfBirth]];
     _childLabel2.text = [NSString stringWithFormat:@"Medicare Number: %@", _child.medicareNumber];
-    _childLabel3.text = [NSString stringWithFormat:@"Registration Date:	%@", _child.registrationDate];
+    _childLabel3.text = [NSString stringWithFormat:@"Registration Date:	%@", [df stringFromDate:self.child.registrationDate]];
     
     if (![_childLabel5.text isEqual: @""]) {
         _childLabel5.text = @"";
@@ -344,6 +346,9 @@ Update the UI to reflect the child set on initial load.
     _childLabel7.text = @"";
 
 }
+
+
+
 
 
 - (void)dismissModalViewController {
