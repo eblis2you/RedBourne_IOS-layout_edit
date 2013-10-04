@@ -209,7 +209,35 @@
 		C4A5E7B217E691EC001A007E /* ChildInfoDisabilityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A5E7B017E691EC001A007E /* ChildInfoDisabilityViewController.xib */; };
 		C4A5E7B617E69EBC001A007E /* ChildInfoMedicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A5E7B417E69EBC001A007E /* ChildInfoMedicationViewController.m */; };
 		C4A5E7B717E69EBC001A007E /* ChildInfoMedicationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A5E7B517E69EBC001A007E /* ChildInfoMedicationViewController.xib */; };
+		C4C4CEAE17FE3D4F006CB9B1 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C4CEAB17FE3D0F006CB9B1 /* libQuickDialog.a */; };
+		C4C4CEB317FE4345006CB9B1 /* QGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C4CEB217FE4345006CB9B1 /* QGeneralViewController.m */; };
+		C4C4CEB617FE4362006CB9B1 /* QDisabilityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C4CEB517FE4362006CB9B1 /* QDisabilityViewController.m */; };
+		C4C4CEB917FE439F006CB9B1 /* QMedicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4C4CEB817FE439F006CB9B1 /* QMedicationViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C4C4CEA817FE3D0F006CB9B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4C4CEA317FE3D0E006CB9B1 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D80B0E3313E052DF00FA85CA;
+			remoteInfo = QuickDialogExample;
+		};
+		C4C4CEAA17FE3D0F006CB9B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4C4CEA317FE3D0E006CB9B1 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C542393145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+		C4C4CEAC17FE3D3C006CB9B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4C4CEA317FE3D0E006CB9B1 /* QuickDialog.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C542392145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C4426C6817E2BAD8000635AC /* ChildInfoGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildInfoGeneralViewController.h; sourceTree = "<group>"; };
@@ -437,6 +465,13 @@
 		C4A5E7B317E69EBC001A007E /* ChildInfoMedicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildInfoMedicationViewController.h; sourceTree = "<group>"; };
 		C4A5E7B417E69EBC001A007E /* ChildInfoMedicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildInfoMedicationViewController.m; sourceTree = "<group>"; };
 		C4A5E7B517E69EBC001A007E /* ChildInfoMedicationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChildInfoMedicationViewController.xib; sourceTree = "<group>"; };
+		C4C4CEA317FE3D0E006CB9B1 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
+		C4C4CEB117FE4345006CB9B1 /* QGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGeneralViewController.h; sourceTree = "<group>"; };
+		C4C4CEB217FE4345006CB9B1 /* QGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGeneralViewController.m; sourceTree = "<group>"; };
+		C4C4CEB417FE4362006CB9B1 /* QDisabilityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDisabilityViewController.h; sourceTree = "<group>"; };
+		C4C4CEB517FE4362006CB9B1 /* QDisabilityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDisabilityViewController.m; sourceTree = "<group>"; };
+		C4C4CEB717FE439F006CB9B1 /* QMedicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMedicationViewController.h; sourceTree = "<group>"; };
+		C4C4CEB817FE439F006CB9B1 /* QMedicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMedicationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +479,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C4CEAE17FE3D4F006CB9B1 /* libQuickDialog.a in Frameworks */,
 				C4426C7B17E2BB24000635AC /* QuartzCore.framework in Frameworks */,
 				C461562417E2B9DE00A2188E /* UIKit.framework in Frameworks */,
 				C461562617E2B9DE00A2188E /* Foundation.framework in Frameworks */,
@@ -708,6 +744,7 @@
 		C461562217E2B9DE00A2188E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4C4CEA317FE3D0E006CB9B1 /* QuickDialog.xcodeproj */,
 				C4426C7A17E2BB24000635AC /* QuartzCore.framework */,
 				C461562317E2B9DE00A2188E /* UIKit.framework */,
 				C461562517E2B9DE00A2188E /* Foundation.framework */,
@@ -754,6 +791,7 @@
 		C4AB58A717F00A5500FF12EB /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				C4C4CEAF17FE42F7006CB9B1 /* QuickDialog */,
 				C4426C6817E2BAD8000635AC /* ChildInfoGeneralViewController.h */,
 				C4426C6917E2BAD8000635AC /* ChildInfoGeneralViewController.m */,
 				C4A5E7AE17E691EC001A007E /* ChildInfoDisabilityViewController.h */,
@@ -764,6 +802,28 @@
 				C4A5E7B517E69EBC001A007E /* ChildInfoMedicationViewController.xib */,
 			);
 			name = Editor;
+			sourceTree = "<group>";
+		};
+		C4C4CEA417FE3D0E006CB9B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4C4CEA917FE3D0F006CB9B1 /* QuickDialogExample.app */,
+				C4C4CEAB17FE3D0F006CB9B1 /* libQuickDialog.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4C4CEAF17FE42F7006CB9B1 /* QuickDialog */ = {
+			isa = PBXGroup;
+			children = (
+				C4C4CEB117FE4345006CB9B1 /* QGeneralViewController.h */,
+				C4C4CEB217FE4345006CB9B1 /* QGeneralViewController.m */,
+				C4C4CEB417FE4362006CB9B1 /* QDisabilityViewController.h */,
+				C4C4CEB517FE4362006CB9B1 /* QDisabilityViewController.m */,
+				C4C4CEB717FE439F006CB9B1 /* QMedicationViewController.h */,
+				C4C4CEB817FE439F006CB9B1 /* QMedicationViewController.m */,
+			);
+			name = QuickDialog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -780,6 +840,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C4C4CEAD17FE3D3C006CB9B1 /* PBXTargetDependency */,
 			);
 			name = RedBourne_IOS;
 			productName = RedBourne_IOS;
@@ -805,12 +866,35 @@
 			mainGroup = C461561717E2B9DE00A2188E;
 			productRefGroup = C461562117E2B9DE00A2188E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C4C4CEA417FE3D0E006CB9B1 /* Products */;
+					ProjectRef = C4C4CEA317FE3D0E006CB9B1 /* QuickDialog.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C461561F17E2B9DE00A2188E /* RedBourne_IOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C4C4CEA917FE3D0F006CB9B1 /* QuickDialogExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = QuickDialogExample.app;
+			remoteRef = C4C4CEA817FE3D0F006CB9B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C4C4CEAB17FE3D0F006CB9B1 /* libQuickDialog.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libQuickDialog.a;
+			remoteRef = C4C4CEAA17FE3D0F006CB9B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C461561E17E2B9DE00A2188E /* Resources */ = {
@@ -1004,13 +1088,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C4CEB617FE4362006CB9B1 /* QDisabilityViewController.m in Sources */,
 				C461563217E2B9DE00A2188E /* main.m in Sources */,
 				C461563617E2B9DE00A2188E /* AppDelegate.m in Sources */,
 				C461563F17E2B9DE00A2188E /* RedBourne_IOS.xcdatamodeld in Sources */,
+				C4C4CEB317FE4345006CB9B1 /* QGeneralViewController.m in Sources */,
 				C4426C7017E2BAD8000635AC /* ChildInfoGeneralViewController.m in Sources */,
 				C4426C7117E2BAD8000635AC /* LeftViewController.m in Sources */,
 				C4426C7217E2BAD8000635AC /* RightViewController.m in Sources */,
 				C4426C7317E2BAD8000635AC /* SDSegmentedControl.m in Sources */,
+				C4C4CEB917FE439F006CB9B1 /* QMedicationViewController.m in Sources */,
 				C4426C7617E2BAE7000635AC /* ChildModel.m in Sources */,
 				C4426C9217E2BB3E000635AC /* AFHTTPClient.m in Sources */,
 				C4426C9317E2BB3E000635AC /* AFHTTPRequestOperation.m in Sources */,
@@ -1029,6 +1116,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C4C4CEAD17FE3D3C006CB9B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QuickDialog;
+			targetProxy = C4C4CEAC17FE3D3C006CB9B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C461562E17E2B9DE00A2188E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1044,7 +1139,7 @@
 		C461564017E2B9DE00A2188E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1068,15 +1163,18 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "<Multiple values>/**";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "\"${PROJECT_DIR}/QuickDialog\"/**";
 			};
 			name = Debug;
 		};
 		C461564117E2B9DE00A2188E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1094,8 +1192,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "<Multiple values>/**";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "\"${PROJECT_DIR}/QuickDialog\"/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

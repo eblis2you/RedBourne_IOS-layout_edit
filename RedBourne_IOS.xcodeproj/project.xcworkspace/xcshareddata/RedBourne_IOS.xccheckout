@@ -12,6 +12,8 @@
 	<dict>
 		<key>1D93AB6F-EC6E-4DDC-B309-093745ABD3C7</key>
 		<string>https://github.com/eblis2you/RedBourne_IOS-layout_edit.git</string>
+		<key>C81E8CE1-FBFB-4758-9169-758149BC2EBE</key>
+		<string>ssh://github.com/escoz/QuickDialog.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>RedBourne_IOS.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>1D93AB6F-EC6E-4DDC-B309-093745ABD3C7</key>
 		<string>../..</string>
+		<key>C81E8CE1-FBFB-4758-9169-758149BC2EBE</key>
+		<string>../../QuickDialog</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/eblis2you/RedBourne_IOS-layout_edit.git</string>
@@ -28,6 +32,14 @@
 	<string>1D93AB6F-EC6E-4DDC-B309-093745ABD3C7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C81E8CE1-FBFB-4758-9169-758149BC2EBE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>QuickDialog</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

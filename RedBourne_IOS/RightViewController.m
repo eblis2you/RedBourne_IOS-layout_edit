@@ -116,10 +116,35 @@ Update the UI to reflect the child set on initial load.
     switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
         {
-            ChildInfoGeneralViewController *profileEditVC = [[ChildInfoGeneralViewController alloc] init];
-            profileEditVC.child = self.child;
-            profileEditVC.modalPresentationStyle = UIModalPresentationFullScreen;
-            [self presentViewController:profileEditVC animated:YES completion:nil];
+//            ChildInfoGeneralViewController *profileEditVC = [[ChildInfoGeneralViewController alloc] init];
+//            profileEditVC.child = self.child;
+//            profileEditVC.modalPresentationStyle = UIModalPresentationFullScreen;
+//            [self presentViewController:profileEditVC animated:YES completion:nil];
+            
+            QRootElement *root = [[QRootElement alloc] init];
+            root.title = @"General Information";
+            root.grouped = YES;
+            QSection *section = [[QSection alloc] initWithTitle:@"Personal Infor"];
+            
+            QLabelElement *fnameLabel = [[QLabelElement alloc] initWithTitle:@"First Name" Value:nil];
+            
+            
+            [root addSection:section];
+            [section addElement:fnameLabel];
+            
+            UINavigationController *navigation = [QuickDialogController controllerWithNavigationForRoot:root];
+            
+            navigation.navigationBar.topItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismissModalViewController)];
+
+            
+            
+            navigation.modalPresentationStyle = UIModalPresentationPageSheet;
+            [self presentViewController:navigation animated:YES completion:nil];
+            
+            
+            
+
+            
         }   break;
         case 1:
         {
@@ -145,11 +170,6 @@ Update the UI to reflect the child set on initial load.
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-
-    // Dispose of any resources that can be recreated, in this case the IBOutlets.
-    [self setNameLabel:nil];
-    [self setDescriptionLabel:nil];
-    [self setIconImageView:nil];
 }
 
 #pragma mark - Child Selection Delegate
@@ -186,19 +206,6 @@ Update the UI to reflect the child set on initial load.
         [self displayChildInfo_Disability];
     } else {
         [self displayChildInfo_General];
-    }
-    switch (self.segmentedControl.selectedSegmentIndex) {
-        case 0:
-            [self displayChildInfo_General];
-            break;
-        case 1:
-            [self displayChildInfo_Disability];
-            break;
-        case 2:
-            [self displayChildInfo_Medication];
-            break;
-        default:
-            break;
     }
     
     _nameLabel.text =  self.child.fullName;
@@ -308,5 +315,7 @@ Update the UI to reflect the child set on initial load.
 }
 
 
-
+- (void)dismissModalViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

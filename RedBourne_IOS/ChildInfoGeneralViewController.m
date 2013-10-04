@@ -26,10 +26,11 @@
     if (self) {
         self.title = @"Edit Child Information";
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(saveUserWhenClosing)
-                                                     name:@"UIApplicationDidEnterBackgroundNotification"
-                                                   object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(saveUserWhenClosing)
+         name:@"UIApplicationDidEnterBackgroundNotification"
+         object:nil];
     }
     return self;
 }
@@ -47,6 +48,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     //reuseable frame for elements
@@ -190,8 +194,6 @@
     
     
     
-    NSLog(@"%@ %@", self.child.firstName, self.child.surName);
-    NSLog(@"%@", self.child.description);
 
     
     [ChildModel saveChild:self.child];
@@ -201,6 +203,9 @@
 }
 
 - (void)cancelButton{
+    
+
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
