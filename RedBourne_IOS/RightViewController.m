@@ -126,22 +126,33 @@ Update the UI to reflect the child set on initial load.
             root.grouped = YES;
             
             QSection *sectionPersonalInfo = [[QSection alloc] initWithTitle:@"Personal Information"];
-            QEntryElement *fNameLable = [[QEntryElement alloc] initWithTitle:@"First name: " Value:nil];
-            QEntryElement *sNameLable = [[QEntryElement alloc] initWithTitle:@"Sur name: " Value:nil];
+            QEntryElement *fNameLable = [[QEntryElement alloc] initWithTitle:@"First name: "
+                                                                       Value:self.child.firstName
+                                                                 Placeholder:nil];
+            QEntryElement *sNameLable = [[QEntryElement alloc] initWithTitle:@"Sur name: "
+                                                                       Value:self.child.surName
+                                                                 Placeholder:nil];
+            QDateTimeInlineElement *dobDateLable = [[QDateTimeInlineElement alloc] initWithTitle:@"Date of birth: "
+                                                                                            date:self.child.dateOfBirth
+                                                                                         andMode:UIDatePickerModeDate];
 
             [sectionPersonalInfo addElement:fNameLable];
             [sectionPersonalInfo addElement:sNameLable];
-            
+            [sectionPersonalInfo addElement:dobDateLable];
+
             
             QSection *sectionAdditionalInfo = [[QSection alloc] initWithTitle:@"Additional Information"];
-            QEntryElement *medCareNumLable = [[QEntryElement alloc] initWithTitle:@"Medication number: " Value:nil];
+            QEntryElement *medCareNumLable = [[QEntryElement alloc] initWithTitle:@"Medication number: "
+                                                                            Value:self.child.medicareNumber
+                                                                      Placeholder:nil];
             QDateTimeInlineElement *registrationDateLable = [[QDateTimeInlineElement alloc] initWithTitle:@"Registration date: "
-                                                                                                     date:[NSDate date] andMode:UIDatePickerModeDate];
+                                                                                                     date:self.child.registrationDate
+                                                                                                  andMode:UIDatePickerModeDate];
             [sectionAdditionalInfo addElement:medCareNumLable];
             [sectionAdditionalInfo addElement:registrationDateLable];
             
             QSection *sectionUpload = [[QSection alloc] initWithTitle:@"Uploading Photot"];
-            QLabelElement *chooseFromPhotoLabel = [[QLabelElement alloc] initWithTitle:@"Choose from Photo" Value:nil];
+            QLabelElement *chooseFromPhotoLabel = [[QLabelElement alloc] initWithTitle:@"Choose from Photo" Value:@"photo"];
             
             [sectionUpload addElement:chooseFromPhotoLabel];
 

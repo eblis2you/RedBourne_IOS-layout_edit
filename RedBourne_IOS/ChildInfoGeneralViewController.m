@@ -39,9 +39,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.firstNameField.text = self.child.firstName;
     self.surNameField.text = self.child.surName;
-    self.DOBField.text = self.child.dateOfBirth;
+//    self.DOBField.text = self.child.dateOfBirth;
     self.medicareNumberField.text = self.child.medicareNumber;
-    self.registrationDate.text = self.child.registrationDate;
+//    self.registrationDate.text = self.child.registrationDate;
 }
 
 
@@ -188,9 +188,9 @@
 
     self.child.firstName = self.firstNameField.text;
     self.child.surName = self.surNameField.text;
-    self.child.dateOfBirth = self.DOBField.text;
+//    self.child.dateOfBirth = self.DOBField.text;
     self.child.medicareNumber = self.medicareNumberField.text;
-    self.child.registrationDate = self.registrationDate.text;
+//    self.child.registrationDate = self.registrationDate.text;
     
     
     

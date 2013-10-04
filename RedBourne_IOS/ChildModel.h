@@ -31,8 +31,8 @@
 @property (strong, nonatomic) NSString *specialNeedsComments;
 
 //need to chage data type to Date
-@property (strong, nonatomic) NSString *registrationDate;
-@property (strong, nonatomic) NSString *dateOfBirth;
+@property (strong, nonatomic) NSDate *registrationDate;
+@property (strong, nonatomic) NSDate *dateOfBirth;
 @property (strong, nonatomic) NSString *disabilityStartDate;
 @property (strong, nonatomic) NSString *specialNeedsStartDate;
 @property (strong, nonatomic) NSString *applySchoolAgePercentageFrom;
@@ -56,9 +56,9 @@
 -(id)initWithFirstName:(NSString *)aFirstName
                surName:(NSString *)aSurName
                    crn:(NSString *)aCrn
-           dateOfBirth:(NSString *)aDateOfBirth
+           dateOfBirth:(NSDate *)aDateOfBirth
         medicareNumber:(NSString *)aMedicareNumber
-      registrationDate:(NSString *)aRegistrationDate
+      registrationDate:(NSDate *)aRegistrationDate
         countryOfBirth:(NSNumber *)aCountryOfBirth
             disability:(NSString *)theDisability
    disabilityStartDate:(NSString *)theDisabilityStartDate

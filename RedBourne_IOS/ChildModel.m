@@ -20,9 +20,9 @@
 -(id)initWithFirstName:(NSString *)aFirstName
                surName:(NSString *)aSurName
                    crn:(NSString *)aCrn
-           dateOfBirth:(NSString *)aDateOfBirth
+           dateOfBirth:(NSDate *)aDateOfBirth
         medicareNumber:(NSString *)aMedicareNumber
-      registrationDate:(NSString *)aRegistrationDate
+      registrationDate:(NSDate *)aRegistrationDate
         countryOfBirth:(NSNumber *)aCountryOfBirth
             disability:(NSString *)theDisability
    disabilityStartDate:(NSString *)theDisabilityStartDate

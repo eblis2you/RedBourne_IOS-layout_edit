@@ -124,6 +124,10 @@
                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
      {
          NSMutableArray *temp = [[NSMutableArray alloc] init];
+         NSDateFormatter *dobFormatter = [[NSDateFormatter alloc] init];
+         NSDate *dob = [[NSDate alloc] init];
+         [dobFormatter setDateFormat:@"dd-MM-yyyy"];
+         
          
          for (NSDictionary *child in JSON)
          {
@@ -149,12 +153,19 @@
                  [tempMedicationArray addObject:med];
                  
              }
+             
+
+             dob = [dobFormatter dateFromString:child[@"dateOfBirth"]];
+             NSDate *dateOfBirth = dob;
+             dob = [dobFormatter dateFromString:child[@"registrationDate"]];
+
+             
              ChildModel *childModel = [[ChildModel alloc] initWithFirstName:child[@"firstName"]
                                                                     surName:child[@"surName"]
                                                                         crn:child[@"crn"]
-                                                                dateOfBirth:child[@"dateOfBirth"]
+                                                                dateOfBirth:dateOfBirth
                                                              medicareNumber:child[@"medicareNumber"]
-                                                           registrationDate:child[@"registrationDate"]
+                                                           registrationDate:dob
                                                              countryOfBirth:child[@"countryOfBirth"]
                                                                  disability:child[@"disability"]
                                                         disabilityStartDate:child[@"disabilityStartDate"]
